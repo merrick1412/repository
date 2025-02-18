@@ -1,0 +1,12 @@
+echo "Name exam1 exam2 exam3" > testdata.dat
+echo "Brown 92 70 93" >> testdata.dat
+echo "Daniels 85 80 80" >> testdata.dat
+echo "Douglas 90 60 70" >> testdata.dat
+echo "Ford 92 64 93" >> testdata.dat
+echo "Green 72 72 72" >> testdata.dat
+echo "Johnson 90 85 80" >> testdata.dat
+echo "Jones 85 73 94" >> testdata.dat
+echo "Lewis 80 64 70" >> testdata.dat
+echo "Miller 93 73 87" >> testdata.dat
+echo "Smith 84 72 93" >> testdata.dat
+echo "White 92 72 86" >> testdata.dat

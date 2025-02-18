@@ -1,0 +1,12 @@
+empty() - O(1)
+the runtime will always be 1,
+ because there will only be 1 operation performed here. (a comparison operator on size)
+which means the time it takes to make this check will remain the same.
+
+erase(iterator itr) - O(n)
+depending on the size of the distance the for loop has to navigate, n, it can only take n time.
+there is no case where it will take longer than n time, because that is the boundaries of the loop
+the only other case would be O(1), which is negligible compared to O(n).
+
+pop_back() - O(1)
+pop back will only perform one operation, no matter the size. Either a cout, or a decrement.

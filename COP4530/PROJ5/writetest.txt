@@ -1,0 +1,15 @@
+7
+w
+c
+word20.txt
+x
+test_hashtable.out
+bbb
+r
+d
+a
+word4.txt
+aaa
+s
+l
+f

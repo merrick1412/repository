@@ -1,0 +1,3 @@
+C:/Users/merrick/CLionProjects/playingwithnumbers/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+C:/Users/merrick/CLionProjects/playingwithnumbers/cmake-build-debug/CMakeFiles/playingwithnumbers.dir
+C:/Users/merrick/CLionProjects/playingwithnumbers/cmake-build-debug/CMakeFiles/edit_cache.dir

@@ -1,0 +1,3 @@
+C:/Users/merrick/CLionProjects/OrderedExamScores/cmake-build-debug/CMakeFiles/OrderedExamScores.dir
+C:/Users/merrick/CLionProjects/OrderedExamScores/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/merrick/CLionProjects/OrderedExamScores/cmake-build-debug/CMakeFiles/rebuild_cache.dir

@@ -1,0 +1,8 @@
+ls -l;
+mkdir batchtestwrite;
+ ;
+ quit;
+      ls ;
+	  
+  ls -l;
+  grep batchtestwrite

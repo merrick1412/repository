@@ -1,0 +1,3 @@
+C:/Users/merrick/Desktop/CS projects/AvengersDataByRange/cmake-build-debug/CMakeFiles/AvengersDataByRange.dir
+C:/Users/merrick/Desktop/CS projects/AvengersDataByRange/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/merrick/Desktop/CS projects/AvengersDataByRange/cmake-build-debug/CMakeFiles/rebuild_cache.dir

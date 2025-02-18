@@ -1,0 +1,24 @@
+# ninja log v5
+1	379	6677874818191413	CMakeFiles/AvengersPart1.dir/main.cpp.obj	beff1aac0129b5a1
+488	680	6683208799125347	AvengersPart1.exe	40de49473fd9f43e
+9	669	6702163437258869	build.ninja	2d117425f3f2350b
+4	600	6678102018828476	CMakeFiles/AvengersPart1.dir/AvengersPart1.cpp.obj	18e1f45460915f96
+3	487	6683208797203596	CMakeFiles/AvengersPart1.dir/AvengersPart2.cpp.obj	13a0a8bcd1c2bff3
+1	233	6702163437258869	build.ninja	2d117425f3f2350b
+5	554	6702190788878621	CMakeFiles/AvengersPart1.dir/AvengersPart2.cpp.obj	13a0a8bcd1c2bff3
+3	490	6702192608279732	CMakeFiles/AvengersPart1.dir/AvengersPart2.cpp.obj	13a0a8bcd1c2bff3
+3	455	6702193593012171	CMakeFiles/AvengersPart1.dir/AvengersPart2.cpp.obj	13a0a8bcd1c2bff3
+3	492	6702196455784546	CMakeFiles/AvengersPart1.dir/AvengersPart2.cpp.obj	13a0a8bcd1c2bff3
+4	479	6702196903273408	CMakeFiles/AvengersPart1.dir/AvengersPart2.cpp.obj	13a0a8bcd1c2bff3
+4	469	6702199255472607	CMakeFiles/AvengersPart1.dir/AvengersPart2.cpp.obj	13a0a8bcd1c2bff3
+469	615	6702199256901846	AvengersPart1.exe	40de49473fd9f43e
+5	488	6702200299198235	CMakeFiles/AvengersPart1.dir/AvengersPart2.cpp.obj	13a0a8bcd1c2bff3
+489	652	6702200300799685	AvengersPart1.exe	40de49473fd9f43e
+3	475	6702200707939901	CMakeFiles/AvengersPart1.dir/AvengersPart2.cpp.obj	13a0a8bcd1c2bff3
+476	633	6702200709511329	AvengersPart1.exe	40de49473fd9f43e
+3	469	6702201063838778	CMakeFiles/AvengersPart1.dir/AvengersPart2.cpp.obj	13a0a8bcd1c2bff3
+470	604	6702201065149974	AvengersPart1.exe	40de49473fd9f43e
+3	484	6702205963022725	CMakeFiles/AvengersPart1.dir/AvengersPart2.cpp.obj	13a0a8bcd1c2bff3
+485	633	6702205964534097	AvengersPart1.exe	40de49473fd9f43e
+3	516	6702217038368791	CMakeFiles/AvengersPart1.dir/AvengersPart2.cpp.obj	13a0a8bcd1c2bff3
+517	675	6702217039920289	AvengersPart1.exe	40de49473fd9f43e

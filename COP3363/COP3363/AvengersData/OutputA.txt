@@ -1,0 +1,77 @@
+Avengers Data
+Options
+A) Display count and names of the Avengers who who have died at least once ...
+B) Display average number of appearances of Avengers who have never Died by gender...
+Please select option (A-B)...Display name and count of Avengers who have died at least once
+The following Avengers have died at least once ....
+Henry_Pym
+Janet_van_Dyne
+Anthony_Stark
+Robert_Bruce_Banner
+Thor_Odinson
+Steven_Rogers
+Clint_Barton
+Pietro_Maximoff
+Wanda_Maximoff
+Jacques_Duquesne
+Vision
+Natalia_Romanova
+Mantis
+Heather_Douglas
+Patricia_Walker
+Matthew_Hawk
+Robert_Frank
+Simon_Williams
+Mar-Vell
+Jocasta
+Jennifer_Walters
+Barbara_Morse
+Moira_Brandon
+Benjamin_Grimm
+Human_Torch_(Android)
+2ZP45-9-X-51
+Namor_McKenzie
+Scott_Lang
+Anthony_Druid
+Marrina_Smallwood
+Ravonna_Renslayer
+Rita_DeMara
+Dennis_Dunphy
+Gilgamesh
+Wendell_Vaughn
+Dinah_Soar
+DeMarr_Davis
+Monkey_Joe
+Doug_Taggert
+Wade_Wilson
+Peter_Parker
+William_Baker
+Eric_Masterson
+Deathcry
+Anthony_Stark
+Giuletta_Nefaria_(Masque)
+Jonathan_Hart
+Veranke
+James_Howlett
+Robert_Reynolds
+Maya_Lopez
+Cassandra_Lang
+Vision_(Jonas)
+Ares
+Sharon_Carter
+Eric_OGrady
+Richard_Rider
+Dennis_Sykes
+Thaddeus_Ross
+Ken_Mack
+Humberto_Lopez
+Otto_Octavius
+Marcus_Milton
+Shiro_Yoshida
+Ex_Nihilo
+Abyss_(Ex_Nihilo)
+Nightmask
+Kevin_Connor
+Victor_Mancha
+The number of Avengers have died at least once = 69
+The percentage of Avengers have died at least once = 39.8844

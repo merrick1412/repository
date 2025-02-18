@@ -1,0 +1,22 @@
+# ninja log v5
+5	309	6653005787722568	build.ninja	d8999295f1a69830
+0	375	6653005792937303	CMakeFiles/OrderedExamScores.dir/ExamScores.cpp.obj	950f597fa8622938
+377	552	6653005794678981	OrderedExamScores.exe	6207cfbebf6ea0a8
+3	441	6653007084680865	CMakeFiles/OrderedExamScores.dir/ExamScores.cpp.obj	950f597fa8622938
+441	584	6653007086102246	OrderedExamScores.exe	6207cfbebf6ea0a8
+3	575	6653029473222518	CMakeFiles/OrderedExamScores.dir/ExamScores.cpp.obj	950f597fa8622938
+576	829	6653029475724804	OrderedExamScores.exe	6207cfbebf6ea0a8
+3	414	6653030901261013	CMakeFiles/OrderedExamScores.dir/ExamScores.cpp.obj	950f597fa8622938
+415	559	6653030902682395	OrderedExamScores.exe	6207cfbebf6ea0a8
+3	416	6653032722466539	CMakeFiles/OrderedExamScores.dir/ExamScores.cpp.obj	950f597fa8622938
+416	556	6653032723847799	OrderedExamScores.exe	6207cfbebf6ea0a8
+3	444	6653034089997181	CMakeFiles/OrderedExamScores.dir/ExamScores.cpp.obj	950f597fa8622938
+445	586	6653034091388442	OrderedExamScores.exe	6207cfbebf6ea0a8
+4	419	6653034665514583	CMakeFiles/OrderedExamScores.dir/ExamScores.cpp.obj	950f597fa8622938
+420	578	6653034667076012	OrderedExamScores.exe	6207cfbebf6ea0a8
+4	571	6653035302016791	CMakeFiles/OrderedExamScores.dir/ExamScores.cpp.obj	950f597fa8622938
+572	753	6653035303788392	OrderedExamScores.exe	6207cfbebf6ea0a8
+3	442	6653039732255121	CMakeFiles/OrderedExamScores.dir/ExamScores.cpp.obj	950f597fa8622938
+442	587	6653039733686427	OrderedExamScores.exe	6207cfbebf6ea0a8
+4	441	6653046088273617	CMakeFiles/OrderedExamScores.dir/ExamScores.cpp.obj	950f597fa8622938
+442	578	6653046089614929	OrderedExamScores.exe	6207cfbebf6ea0a8

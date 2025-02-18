@@ -1,0 +1,4 @@
+it is O(n).
+this is because it is not a balanced tree which would be O(logn),
+and the worst case scenario would be having to traverse all the way down
+a completely unbalanced tree of size n.
