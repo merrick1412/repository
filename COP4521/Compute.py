@@ -43,7 +43,7 @@ dtypes = { #defines the datatypes ill be using
     'Dry Eye Disease': 'object',
 }
 df = dd.read_csv('Dry_Eye_Dataset.csv', dtype=dtypes) #load it into dask
-# Convert 'Y'/'N' columns to 1/0
+# Convelrt 'Y'/'N' columns to 1/0
 
 df['Caffeine consumption'] = df['Caffeine consumption'].apply(convert_y_n, meta=('Caffeine consumption', 'float64'))
 df['Alcohol consumption'] = df['Alcohol consumption'].apply(convert_y_n, meta=('Alcohol consumption', 'float64'))
