@@ -34,7 +34,7 @@ if (!@freqs) {
 $Text::Wrap::columns = 80;
 
 #print the frequencies
-foreach my $freq (@freq) {
+foreach my $freq (@freqs) {
     my @words = sort @{$freq_to_words{$freq}};
     my $joined = join(', ', @words);
     my $wrapped = wrap("$freq: ", "	", $joined);
