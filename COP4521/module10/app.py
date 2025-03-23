@@ -14,14 +14,15 @@ from config import Config
 app = Flask(__name__)
 app.config.from_object(Config)
 db.init_app(app)
-
+#sends to home
 @app.route('/')
 def home():
     return render_template('home.html')
-
+#add customer page
 @app.route('/add_customer', methods=['GET', 'POST'])
 def add_customer():
     form = CustomerForm()
+    #input validation
     if form.validate_on_submit():
         if not form.name.data.strip():
             flash("Name cannot be empty or only spaces", "error")
@@ -38,7 +39,7 @@ def add_customer():
         if not form.login_password.data.strip():
             flash("Login password cannot be empty or only spaces", "error")
             return redirect(url_for('add_customer'))
-
+        #creating the new customer
         new_customer = Customer(
             name=form.name.data.strip(),
             age=form.age.data,
@@ -66,7 +67,7 @@ def list_orders():
 def result():
     msg = request.args.get('msg', 'No message provided')
     return render_template('result.html', msg=msg)
-
+#makes a table
 if __name__ == '__main__':
     with app.app_context():
         db.create_all()  # Create tables if they don't exist
