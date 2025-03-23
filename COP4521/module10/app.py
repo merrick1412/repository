@@ -27,6 +27,10 @@ def add_customer():
         if not (1 <= form.security_role_level.data <= 3):
             flash("Security role level must be between 1 and 3", "error")
             return redirect(url_for('add_customer'))
+        if not form.login_password.data.strip():
+            flash("Login password cannot be empty or only spaces", "error")
+            return redirect(url_for('add_customer'))
+
         new_customer = Customer(
             name=form.name.data.strip(),
             age=form.age.data,
