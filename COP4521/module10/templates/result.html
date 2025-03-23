@@ -30,4 +30,9 @@
 </head>
 <body>
     <h1>Result</h1>
-    <p class="message {% if 'error'
+    <p class="message {% if 'error' in msg.lower() %}error{% else %}success{% endif %}">
+        {{ msg }}
+    </p>
+    <a href="/">Go back to Home</a>
+</body>
+</html>
