@@ -1,3 +1,11 @@
+"""
+Name:Merrick Moncure
+Date: 3/23/25
+Assignmnent: Module 10: website in flask
+make a simple flask website
+Assumptions: NA
+All work below was performed by Merrick Moncure
+"""
 from flask import Flask, render_template, redirect, url_for, request, flash
 from models import db, Customer, Order
 from forms import CustomerForm
