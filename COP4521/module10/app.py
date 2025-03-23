@@ -18,7 +18,13 @@ def add_customer():
         if not form.name.data.strip():
             flash("Name cannot be empty or only spaces", "error")
             return redirect(url_for('add_customer'))
-        
+        if not (1 <= form.age.data <= 120):
+            flash("Age must be between 1 and 120", "error")
+            return redirect(url_for('add_customer'))
+        if not form.phone_number.data.strip():
+            flash("Phone number cannot be empty or only spaces", "error")
+            return redirect(url_for('add_customer'))
+
         new_customer = Customer(
             name=form.name.data.strip(),
             age=form.age.data,
