@@ -15,6 +15,10 @@ def home():
 def add_customer():
     form = CustomerForm()
     if form.validate_on_submit():
+        if not form.name.data.strip():
+            flash("Name cannot be empty or only spaces", "error")
+            return redirect(url_for('add_customer'))
+        
         new_customer = Customer(
             name=form.name.data.strip(),
             age=form.age.data,
