@@ -40,6 +40,9 @@ def login():
 #add customer page
 @app.route('/add_customer', methods=['GET', 'POST'])
 def add_customer():
+    if 'username' not in session or session.get('security_level') != 3:
+        flash("Missing security level")
+        return redirect(url_for('home'))
     form = CustomerForm()
     #input validation
     if form.validate_on_submit():
