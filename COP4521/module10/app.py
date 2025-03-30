@@ -13,7 +13,6 @@ from config import Config
 import os
 
 app = Flask(__name__)
-app.secret_key = os.urandom(24)
 app.config.from_object(Config)
 db.init_app(app)
 #sends to home
