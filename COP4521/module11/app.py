@@ -18,6 +18,24 @@ db.init_app(app)
 @app.route('/')
 def home():
     return render_template('home.html')
+#login page
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
+
+        if username in users_db and users_db[username]['password'] == password:
+            session['username'] = username
+            session['security_level'] = users_db[username]['security_level']
+            flash("Login successful!")
+            return redirect(url_for('home'))
+        else:
+            flash("Invalid login!")
+            return render_template('login.html')
+
+    return render_template('login.html')
+
 #add customer page
 @app.route('/add_customer', methods=['GET', 'POST'])
 def add_customer():
