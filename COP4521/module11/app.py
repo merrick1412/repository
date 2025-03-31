@@ -14,7 +14,10 @@ from config import Config
 app = Flask(__name__)
 app.config.from_object(Config)
 db.init_app(app)
-
+#deal with locks
+@app.before_request
+def before_request():
+    db.session.remove()
 #adding orders
 @app.route('/add_order', methods=['GET','POST'])
 def add_order():
