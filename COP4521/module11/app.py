@@ -22,6 +22,9 @@ def home():
         username = session['username']
         security_level = session['security_level']
         return render_template('home.html', username=username,security_level=security_level)
+    else:
+        flash("You need to log in first")
+        return redirect(url_for('login'))
 @app.route('/logout')
 def logout():
     session.clear()
