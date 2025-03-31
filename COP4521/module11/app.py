@@ -19,9 +19,9 @@ db.init_app(app)
 
 
 #logging queries
-def log_sql_callback(statement):
-    print("Executing SQL statement:", statement)
-conn.set_trace_callback(log_sql_callback)
+#def log_sql_callback(statement):
+#    print("Executing SQL statement:", statement)
+#conn.set_trace_callback(log_sql_callback)
 
 @app.before_request
 def before_request():
