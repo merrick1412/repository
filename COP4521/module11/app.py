@@ -140,7 +140,7 @@ def list_customers():
 def list_orders():
     if 'username' not in session:
         flash("You must log in first")
-        return redirect(url_for('login')) #changed functionality to make sure you see your orders
+        return redirect(url_for('login')) #make sure you see your orders
     user_orders = Order.query.filter_by(customer_id=session['username']).all()
     return render_template('show_orders.html',orders=user_orders)
 
