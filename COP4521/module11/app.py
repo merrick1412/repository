@@ -18,7 +18,15 @@ us
 #sends to home
 @app.route('/')
 def home():
-    return render_template('home.html')
+    if 'username' in session:
+        username = session['username']
+        security_level = session['security_level']
+        return render_template('home.html', username=username,security_level=security_level)
+@app.route('/logout')
+def logout():
+    session.clear()
+    flash("Logged out successfully.")
+    return redirect(url_for('login'))
 #login page
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -26,9 +34,11 @@ def login():
         username = request.form['username']
         password = request.form['password']
 
-        if username in users_db and users_db[username]['password'] == password:
-            session['username'] = username
-            session['security_level'] = users_db[username]['security_level']
+        user = Customer.query.filter_by(name=username).first()
+
+        if user and user.login_password == password:
+            session['username'] = user.name
+            session['security_level'] = user.security_role_level
             flash("Login successful!")
             return redirect(url_for('home'))
         else:
