@@ -137,7 +137,7 @@ def list_customers():
     return render_template('list_customers.html', customers=customers)
 
 @app.route('/show_orders')
-def list_orders():
+def show_orders():
     if 'username' not in session:
         flash("You must log in first")
         return redirect(url_for('login')) #make sure you see your orders
