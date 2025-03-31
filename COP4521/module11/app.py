@@ -23,40 +23,48 @@ def add_order():
         return redirect(url_for('login'))
     form = OrderForm()
     if form.validate_on_submit():
-        #validate the data
-        item_sku = form.item_sku.data.strip()
-        if not item_sku:
-            flash("Item SKU cannot be empty or only spaces", "error")
-            return redirect(url_for('add_order'))
+        try:
+            #validate the data
+            item_sku = form.item_sku.data.strip()
+            if not item_sku:
+                flash("Item SKU cannot be empty or only spaces", "error")
+                return redirect(url_for('add_order'))
 
-        # Quantity must be greater than 0
-        quantity = form.quantity.data
-        if quantity <= 0:
-            flash("Quantity must be greater than 0", "error")
-            return redirect(url_for('add_order'))
+            # Quantity must be greater than 0
+            quantity = form.quantity.data
+            if quantity <= 0:
+                flash("Quantity must be greater than 0", "error")
+                return redirect(url_for('add_order'))
 
-        # Price must be greater than 0
-        price = form.price.data
-        if price <= 0:
-            flash("Price must be greater than 0", "error")
-            return redirect(url_for('add_order'))
+            # Price must be greater than 0
+            price = form.price.data
+            if price <= 0:
+                flash("Price must be greater than 0", "error")
+                return redirect(url_for('add_order'))
 
-        # Credit Card number cannot be empty or only spaces
-        credit_card = form.credit_card.data.strip()
-        if not credit_card:
-            flash("Credit Card number cannot be empty or only spaces", "error")
+            # Credit Card number cannot be empty or only spaces
+            credit_card = form.credit_card.data.strip()
+            if not credit_card:
+                flash("Credit Card number cannot be empty or only spaces", "error")
+                return redirect(url_for('add_order'))
+            order = Order(
+                customer_id=session['username'],
+                item_sku=form.item_sku.data.strip(),
+                quantity=form.quantity.data,
+                price=form.price.data,
+                credit_card_num=form.credit_card.data.strip()
+            )
+            db.session.add(order)
+            db.session.commit()
+            flash("Order added successfully")
+            return redirect(url_for('home'))
+        except Exception as e:
+            db.session.rollback() #in case of error
+            flash(f"An error occurred while adding the order: {str(e)}", "error")
             return redirect(url_for('add_order'))
-        order = Order(
-            customer_id=session['username'],
-            item_sku=form.item_sku.data.strip(),
-            quantity=form.quantity.data,
-            price=form.price.data,
-            credit_card_num=form.credit_card.data.strip()
-        )
-        db.session.add(order)
-        db.session.commit()
-        flash("Order added successfully")
-        return redirect(url_for('home'))
+        finally:
+            db.session.remove()
+
     return render_template('add_order.html', form=form)
 #sends to home
 @app.route('/')
