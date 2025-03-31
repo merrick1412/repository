@@ -16,6 +16,10 @@ app.config.from_object(Config)
 db.init_app(app)
 #deal with locks
 
+
+#logging queries
+def log
+
 @app.before_request
 def before_request():
     db.session.remove()
