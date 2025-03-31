@@ -15,6 +15,7 @@ app = Flask(__name__)
 app.config.from_object(Config)
 db.init_app(app)
 #deal with locks
+
 @app.before_request
 def before_request():
     db.session.remove()
@@ -175,5 +176,8 @@ def result():
 #makes a table
 if __name__ == '__main__':
     with app.app_context():
-        db.create_all()  # Create tables if they don't exist
+        try:
+            db.create_all()  # Create tables if they don't exist
+        except Exception as e:
+            print(f"Error during database initialization: {str(e)}")
     app.run(debug=True)
