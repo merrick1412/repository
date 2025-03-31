@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="922b86c1-b38b-4f38-a508-cd1fe24116ae" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/module11/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/module11/app.py" afterDir="false" />
-    </list>
+    <list default="true" id="922b86c1-b38b-4f38-a508-cd1fe24116ae" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -40,7 +38,7 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "//wsl$/Ubuntu/home/merrick1412/repository/COP4521/module11",
+    "last_opened_file_path": "//wsl$/Ubuntu/home/merrick1412/repository/COP4521/module11/templates",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -51,6 +49,7 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="\\wsl$\Ubuntu\home\merrick1412\repository\COP4521\module11\templates" />
       <recent name="\\wsl$\Ubuntu\home\merrick1412\repository\COP4521\module11" />
     </key>
   </component>
@@ -70,7 +69,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1743372030045</updated>
-      <workItem from="1743372034507" duration="3206000" />
+      <workItem from="1743372034507" duration="3541000" />
     </task>
     <servers />
   </component>
