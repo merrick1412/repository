@@ -18,8 +18,8 @@ db.init_app(app)
 
 
 #logging queries
-def log
-
+def log_sql_callback(statement):
+    print("Executing SQL statement:", statement)
 @app.before_request
 def before_request():
     db.session.remove()
