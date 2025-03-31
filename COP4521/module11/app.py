@@ -136,7 +136,7 @@ def list_customers():
     customers = Customer.query.all()
     return render_template('list_customers.html', customers=customers)
 
-@app.route('/list_orders')
+@app.route('/show_orders')
 def list_orders():
     if 'username' not in session:
         flash("You must log in first")
