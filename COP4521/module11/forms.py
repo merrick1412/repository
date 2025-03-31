@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, IntegerField, PasswordField, SubmitField
+from wtforms import StringField, IntegerField, PasswordField, SubmitField, FloatField
 from wtforms.validators import DataRequired, NumberRange, Length
 
 class CustomerForm(FlaskForm):
