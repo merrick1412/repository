@@ -6,4 +6,5 @@ class Config:
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     SQLALCHEMY_POOL_RECYCLE = 300
     SQLALCHEMY_POOL_TIMEOUT = 10
-    SQLALCHEMY_ENGINE_OPTIONS = 
+    SQLALCHEMY_ENGINE_OPTIONS = {
+    'connect_args': {'check_same_thread': False}
