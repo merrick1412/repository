@@ -14,8 +14,7 @@ import sqlite3
 
 app = Flask(__name__)
 app.config.from_object(Config)
-print("running app")
-db.init_app(app)
+
 #deal with locks
 
 
@@ -184,8 +183,11 @@ def result():
 #makes a table
 if __name__ == '__main__':
     with app.app_context():
-        print("running here creatall")
+        
         try:
+            print("running app")
+            db.init_app(app)
+            print("running here creatall")
             db.create_all()  # Create tables if they don't exist
         except Exception as e:
             print(f"Error during database initialization: {str(e)}")
