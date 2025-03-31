@@ -25,8 +25,17 @@ def add_order():
     if form.validate_on_submit():
         #validate the data
         order = Order(
-            customer_id=session['username']
+            customer_id=session['username'],
+            item_sku=form.item_sku.data.strip(),
+            quantity=form.quantity.data,
+            price=form.price.data,
+            credit_card_num=form.credit_card.data.strip()
         )
+        db.session.add(order)
+        db.session.commit()
+        flash("Order added successfully")
+        return redirect(url_for('home'))
+    return render_template('add_order.html', form=form)
 #sends to home
 @app.route('/')
 def home():
