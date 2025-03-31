@@ -10,7 +10,7 @@
 
     <form method="POST" action="{{ url_for('add_order') }}">
         {{ form.hidden_tag() }}
-        
+
         <div>
             <label for="item_sku">Item SKU:</label>
             {{ form.item_sku(class="form-control", id="item_sku") }}

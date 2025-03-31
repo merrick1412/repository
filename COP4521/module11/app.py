@@ -8,7 +8,7 @@ All work below was performed by Merrick Moncure
 """
 from flask import Flask, render_template, redirect, url_for, request, flash, session
 from models import db, Customer, Order
-from forms import CustomerForm
+from forms import CustomerForm, OrderForm
 from config import Config
 
 app = Flask(__name__)
