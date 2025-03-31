@@ -18,6 +18,10 @@ db.init_app(app)
 @app.before_request
 def before_request():
     db.session.remove()
+@app.after_request
+def after_request(response):
+    db.session.remove()
+    return response
 #adding orders
 @app.route('/add_order', methods=['GET','POST'])
 def add_order():
