@@ -24,6 +24,28 @@ def add_order():
     form = OrderForm()
     if form.validate_on_submit():
         #validate the data
+        item_sku = form.item_sku.data.strip()
+        if not item_sku:
+            flash("Item SKU cannot be empty or only spaces", "error")
+            return redirect(url_for('add_order'))
+
+        # Quantity must be greater than 0
+        quantity = form.quantity.data
+        if quantity <= 0:
+            flash("Quantity must be greater than 0", "error")
+            return redirect(url_for('add_order'))
+
+        # Price must be greater than 0
+        price = form.price.data
+        if price <= 0:
+            flash("Price must be greater than 0", "error")
+            return redirect(url_for('add_order'))
+
+        # Credit Card number cannot be empty or only spaces
+        credit_card = form.credit_card.data.strip()
+        if not credit_card:
+            flash("Credit Card number cannot be empty or only spaces", "error")
+            return redirect(url_for('add_order'))
         order = Order(
             customer_id=session['username'],
             item_sku=form.item_sku.data.strip(),
