@@ -14,7 +14,19 @@ from config import Config
 app = Flask(__name__)
 app.config.from_object(Config)
 db.init_app(app)
-us
+
+#adding orders
+@app.rounte('/add_order', methods=['GET','POST'])
+def add_order():
+    if 'username' not in session:
+        flash("You need to log in first")
+        return redirect(url_for('login'))
+    form = OrderForm()
+    if form.validate_on_submit():
+        #validate the data
+        order = Order(
+            customer_id=session['username']
+        )
 #sends to home
 @app.route('/')
 def home():
@@ -23,7 +35,7 @@ def home():
         security_level = session['security_level']
         return render_template('home.html', username=username,security_level=security_level)
     else:
-        flash("You need to log in first")
+        flash("You need to log in first") #redirects to login page
         return redirect(url_for('login'))
 @app.route('/logout')
 def logout():
@@ -34,7 +46,7 @@ def logout():
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
-        username = request.form['username']
+        username = request.form['username'] #checks db for login
         password = request.form['password']
 
         user = Customer.query.filter_by(name=username).first()
@@ -95,8 +107,11 @@ def list_customers():
 
 @app.route('/list_orders')
 def list_orders():
-    orders = Order.query.all()
-    return render_template('list_orders.html', orders=orders)
+    if 'username' not in session:
+        flash("You must log in first")
+        return redirect(url_for('login')) #changed functionality to make sure you see your orders
+    user_orders = Order.query.filter_by(customer_id=session['username']).all()
+    return render_template('show_orders.html',orders=user_orders)
 
 @app.route('/result')
 def result():
