@@ -4,8 +4,4 @@ class Config:
     SECRET_KEY = os.urandom(32)
     SQLALCHEMY_DATABASE_URI = 'sqlite:///database.db'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
-    app.config['SQLALCHEMY_POOL_RECYCLE'] = 300
-    app.config['SQLALCHEMY_POOL_TIMEOUT'] = 10
-    app.config['SQLALCHEMY_ENGINE_OPTIONS'] = {
-        'connect_args': {'check_same_thread': False}
-    }
+   
