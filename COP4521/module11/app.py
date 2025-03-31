@@ -16,7 +16,7 @@ app.config.from_object(Config)
 db.init_app(app)
 
 #adding orders
-@app.rounte('/add_order', methods=['GET','POST'])
+@app.route('/add_order', methods=['GET','POST'])
 def add_order():
     if 'username' not in session:
         flash("You need to log in first")
