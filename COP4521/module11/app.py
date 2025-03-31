@@ -183,7 +183,7 @@ def result():
 #makes a table
 if __name__ == '__main__':
     with app.app_context():
-
+        
         try:
             print("running app")
             db.init_app(app)
