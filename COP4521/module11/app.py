@@ -69,8 +69,6 @@ def add_order():
             db.session.rollback() #in case of error
             flash(f"An error occurred while adding the order: {str(e)}", "error")
             return redirect(url_for('add_order'))
-        finally:
-            db.session.remove()
 
     return render_template('add_order.html', form=form)
 #sends to home
