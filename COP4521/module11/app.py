@@ -10,6 +10,7 @@ from flask import Flask, render_template, redirect, url_for, request, flash, ses
 from models import db, Customer, Order
 from forms import CustomerForm, OrderForm
 from config import Config
+import sqlite3
 
 app = Flask(__name__)
 app.config.from_object(Config)
@@ -20,6 +21,8 @@ db.init_app(app)
 #logging queries
 def log_sql_callback(statement):
     print("Executing SQL statement:", statement)
+conn.set_trace_callback(log_sql_callback)
+
 @app.before_request
 def before_request():
     db.session.remove()
