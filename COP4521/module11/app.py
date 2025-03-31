@@ -145,7 +145,7 @@ def list_orders():
     return render_template('show_orders.html',orders=user_orders)
 @app.route('/list_orders')
 def list_orders():
-    # Check if the user is logged in and has the correct security level
+    #check if the user is logged in and has the correct security level
     if 'username' not in session or session.get('security_level') < 2:
         flash("You do not have permission to view this page.")
         return redirect(url_for('login'))
