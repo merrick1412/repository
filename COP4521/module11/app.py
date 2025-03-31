@@ -143,7 +143,18 @@ def list_orders():
         return redirect(url_for('login')) #make sure you see your orders
     user_orders = Order.query.filter_by(customer_id=session['username']).all()
     return render_template('show_orders.html',orders=user_orders)
+@app.route('/list_orders')
+def list_orders():
+    # Check if the user is logged in and has the correct security level
+    if 'username' not in session or session.get('security_level') < 2:
+        flash("You do not have permission to view this page.")
+        return redirect(url_for('login'))
 
+    # Fetch all orders from the database
+    orders = Order.query.all()
+
+    # Return the list_orders.html template with the orders data
+    return render_template('list_orders.html', orders=orders)
 @app.route('/result')
 def result():
     msg = request.args.get('msg', 'No message provided')
