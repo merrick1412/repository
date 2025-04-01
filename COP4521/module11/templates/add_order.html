@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Order</title>
+</head>
+<body>
+    <h1>Add New Order</h1>
+
+    <form method="POST" action="{{ url_for('add_order') }}">
+        {{ form.hidden_tag() }}
+
+        <div>
+            <label for="item_sku">Item SKU:</label>
+            {{ form.item_sku(class="form-control", id="item_sku") }}
+            {% if form.item_sku.errors %}
+                <ul>
+                    {% for error in form.item_sku.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+
+        <div>
+            <label for="quantity">Quantity:</label>
+            {{ form.quantity(class="form-control", id="quantity") }}
+            {% if form.quantity.errors %}
+                <ul>
+                    {% for error in form.quantity.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+
+        <div>
+            <label for="price">Price:</label>
+            {{ form.price(class="form-control", id="price") }}
+            {% if form.price.errors %}
+                <ul>
+                    {% for error in form.price.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+
+        <div>
+            <label for="credit_card">Credit Card Number:</label>
+            {{ form.credit_card(class="form-control", id="credit_card") }}
+            {% if form.credit_card.errors %}
+                <ul>
+                    {% for error in form.credit_card.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+
+        <div>
+            <button type="submit">{{ form.submit.label }}</button>
+        </div>
+    </form>
+
+    <a href="{{ url_for('home') }}">Back to Home</a>
+</body>
+</html>

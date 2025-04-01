@@ -1,0 +1,63 @@
+<!-- show_orders.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Show My Orders</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <div class="container">
+        <h1>Your Orders</h1>
+
+        <!-- Displaying Flash Messages -->
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul class="flash-messages">
+                    {% for message in messages %}
+                        <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+
+        <!-- Display Orders in a Table -->
+        <table class="orders-table">
+            <thead>
+                <tr>
+                    <th>Order ID</th>
+                    <th>Customer ID</th>
+                    <th>Item SKU</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>Credit Card Number</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if orders %}
+                    {% for order in orders %}
+                        <tr>
+                            <td>{{ order.id }}</td>
+                            <td>{{ order.customer_id }}</td>
+                            <td>{{ order.item_sku }}</td>
+                            <td>{{ order.quantity }}</td>
+                            <td>${{ order.price }}</td>
+                            <td>{{ order.credit_card_num }}</td>
+                        </tr>
+                    {% endfor %}
+                {% else %}
+                    <tr>
+                        <td colspan="6">You have no orders.</td>
+                    </tr>
+                {% endif %}
+            </tbody>
+        </table>
+
+        <!-- Link to Go Back to Home Page -->
+        <a href="{{ url_for('home') }}" class="back-home-link">Back to Home</a>
+    </div>
+
+</body>
+</html>
