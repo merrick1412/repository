@@ -14,7 +14,8 @@ from encrypt import encrypt,decrypt
 import sqlite3
 
 
-
+db.engine.execute("DROP TABLE IF EXISTS Customer")
+db.engine.execute("DROP TABLE IF EXISTS CustOrder")
 app = Flask(__name__)
 app.config.from_object(Config)
 print("running app")
