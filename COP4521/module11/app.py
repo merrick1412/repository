@@ -26,115 +26,116 @@ db.init_app(app)
 
 #using dml to fill initial table
 def test_data():
-    # Create customers and use setter methods for encrypted fields
-    customers = [
-        Customer(
-            name="John Doe",
-            age=30,
-            phone_number="1234567890",  # plain phone number, will be encrypted
-            security_role_level=1,
-            login_password="password123"  # plain password, will be encrypted
-        ),
-        Customer(
-            name="Jane Smith",
-            age=28,
-            phone_number="0987654321",
-            security_role_level=2,
-            login_password="securePass1"
-        ),
-        Customer(
-            name="Alice Johnson",
-            age=35,
-            phone_number="5555555555",
-            security_role_level=1,
-            login_password="alicePass3"
-        ),
-        Customer(
-            name="Bob Brown",
-            age=40,
-            phone_number="6666666666",
-            security_role_level=2,
-            login_password="bobSecure123"
-        ),
-        Customer(
-            name="Charlie Green",
-            age=50,
-            phone_number="7777777777",
-            security_role_level=3,
-            login_password="charliePass2"
-        ),
-        Customer(
-            name="Dana White",
-            age=22,
-            phone_number="8888888888",
-            security_role_level=1,
-            login_password="dana123"
-        )
-    ]
-    # Encrypt phone number and login password for each customer using setter methods
-    for customer in customers:
-        customer.set_phone_number(customer.phone_number)
-        customer.set_login_password(customer.login_password)
+    with app.app_context():
+        # Create customers and use setter methods for encrypted fields
+        customers = [
+            Customer(
+                name="John Doe",
+                age=30,
+                phone_number="1234567890",  # plain phone number, will be encrypted
+                security_role_level=1,
+                login_password="password123"  # plain password, will be encrypted
+            ),
+            Customer(
+                name="Jane Smith",
+                age=28,
+                phone_number="0987654321",
+                security_role_level=2,
+                login_password="securePass1"
+            ),
+            Customer(
+                name="Alice Johnson",
+                age=35,
+                phone_number="5555555555",
+                security_role_level=1,
+                login_password="alicePass3"
+            ),
+            Customer(
+                name="Bob Brown",
+                age=40,
+                phone_number="6666666666",
+                security_role_level=2,
+                login_password="bobSecure123"
+            ),
+            Customer(
+                name="Charlie Green",
+                age=50,
+                phone_number="7777777777",
+                security_role_level=3,
+                login_password="charliePass2"
+            ),
+            Customer(
+                name="Dana White",
+                age=22,
+                phone_number="8888888888",
+                security_role_level=1,
+                login_password="dana123"
+            )
+        ]
+        # Encrypt phone number and login password for each customer using setter methods
+        for customer in customers:
+            customer.set_phone_number(customer.phone_number)
+            customer.set_login_password(customer.login_password)
 
-        # Add customer to the database
-        db.session.add(customer)
+            # Add customer to the database
+            db.session.add(customer)
 
-    db.session.commit()
+        db.session.commit()
 
-    # Create orders and use setter method for encrypted credit card number
-    orders = [
-        Order(
-            customer_id=1,  # use the actual customer_id for the relation
-            item_sku="ABC123",
-            quantity=1,
-            price=100,
-            credit_card_num="4111111111111111"  # plain credit card number, will be encrypted
-        ),
-        Order(
-            customer_id=2,
-            item_sku="DEF456",
-            quantity=2,
-            price=50,
-            credit_card_num="4222222222222222"
-        ),
-        Order(
-            customer_id=3,
-            item_sku="GHI789",
-            quantity=1,
-            price=200,
-            credit_card_num="4333333333333333"
-        ),
-        Order(
-            customer_id=4,
-            item_sku="JKL101",
-            quantity=3,
-            price=30,
-            credit_card_num="4444444444444444"
-        ),
-        Order(
-            customer_id=5,
-            item_sku="MNO202",
-            quantity=2,
-            price=120,
-            credit_card_num="4555555555555555"
-        ),
-        Order(
-            customer_id=6,
-            item_sku="PQR303",
-            quantity=4,
-            price=80,
-            credit_card_num="4666666666666666"
-        )
-    ]
+        # Create orders and use setter method for encrypted credit card number
+        orders = [
+            Order(
+                customer_id=1,  # use the actual customer_id for the relation
+                item_sku="ABC123",
+                quantity=1,
+                price=100,
+                credit_card_num="4111111111111111"  # plain credit card number, will be encrypted
+            ),
+            Order(
+                customer_id=2,
+                item_sku="DEF456",
+                quantity=2,
+                price=50,
+                credit_card_num="4222222222222222"
+            ),
+            Order(
+                customer_id=3,
+                item_sku="GHI789",
+                quantity=1,
+                price=200,
+                credit_card_num="4333333333333333"
+            ),
+            Order(
+                customer_id=4,
+                item_sku="JKL101",
+                quantity=3,
+                price=30,
+                credit_card_num="4444444444444444"
+            ),
+            Order(
+                customer_id=5,
+                item_sku="MNO202",
+                quantity=2,
+                price=120,
+                credit_card_num="4555555555555555"
+            ),
+            Order(
+                customer_id=6,
+                item_sku="PQR303",
+                quantity=4,
+                price=80,
+                credit_card_num="4666666666666666"
+            )
+        ]
 
-    # Encrypt credit card number for each order using setter method
-    for order in orders:
-        order.set_credit_card_num(order.credit_card_num)
+        # Encrypt credit card number for each order using setter method
+        for order in orders:
+            order.set_credit_card_num(order.credit_card_num)
 
-        # Add order to the database
-        db.session.add(order)
+            # Add order to the database
+            db.session.add(order)
 
-    db.session.commit()
+        db.session.commit()
 
 @app.before_request
 def before_request():
