@@ -9,6 +9,6 @@ class Config:
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     SQLALCHEMY_POOL_RECYCLE = 300
     SQLALCHEMY_POOL_TIMEOUT = 1
-    encryption_key = b'your_secret_key_here'
+    encryption_key = b'secure_key'
     cipher = Fernet(encryption_key)
 
