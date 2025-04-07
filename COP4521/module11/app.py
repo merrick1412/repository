@@ -305,7 +305,7 @@ def result():
 if __name__ == '__main__':
     with app.app_context():
         db.session.execute(text("DROP TABLE IF EXISTS Customer")) #drop tables
-        db.session.execute(text("DROP TABLE IF EXISTS Order"))
+        db.session.execute(text('DROP TABLE IF EXISTS "Order"'))
         db.create_all()  # Create tables
 
     test_data()
