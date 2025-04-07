@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="922b86c1-b38b-4f38-a508-cd1fe24116ae" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/module11/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/module11/app.py" afterDir="false" />
-    </list>
+    <list default="true" id="922b86c1-b38b-4f38-a508-cd1fe24116ae" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -16,6 +14,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="HTML File" />
+        <option value="Python Script" />
       </list>
     </option>
   </component>
@@ -134,7 +133,7 @@
       <updated>1743372030045</updated>
       <workItem from="1743372034507" duration="8855000" />
       <workItem from="1743386569024" duration="1250000" />
-      <workItem from="1743993130199" duration="708000" />
+      <workItem from="1743993130199" duration="1256000" />
     </task>
     <servers />
   </component>
