@@ -149,18 +149,16 @@ def add_customer():
             flash("Login password cannot be empty or only spaces", "error")
             return redirect(url_for('add_customer'))
         #encrypt data
-        encrypted_name, encrypted_phone_number, encrypted_login_password = encrypt(form.name.data), encrypt(form.phone_number.data), encrypt(form.login_password.data)
+        encrypted_name, encrypted_phone_number, encrypted_login_password = encrypt(form.name.data.strip()), encrypt(form.phone_number.data.strip()), encrypt(form.login_password.data.strip())
         #creating the new customer
+
         new_customer = Customer(
-            name=form.name.data.strip(),
+            name=encrypted_name,
             age=form.age.data,
-            phone_number=form.phone_number.data.strip(),
+            phone_number=encrypted_phone_number,
             security_role_level=form.security_role_level.data,
-            login_password=form.login_password.data.strip()
+            login_password=encrypted_login_password
         )
-        new_customer.set_name(form.name.data) #new encrypted data
-        new_customer.set_phone_number(form.phone_number.data)
-        new_customer.set_login_password(form.login_password.data)
 
         db.session.add(new_customer)
         db.session.commit()
