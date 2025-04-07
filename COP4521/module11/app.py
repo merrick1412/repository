@@ -20,13 +20,11 @@ app = Flask(__name__)
 app.config.from_object(Config)
 print("running app")
 db.init_app(app)
-#deal with locks
 
 
-#logging queries
-#def log_sql_callback(statement):
-#    print("Executing SQL statement:", statement)
-#conn.set_trace_callback(log_sql_callback)
+#using dml to fill initial table
+def test_data():
+    
 
 @app.before_request
 def before_request():
