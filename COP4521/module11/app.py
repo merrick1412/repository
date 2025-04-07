@@ -108,7 +108,7 @@ def login():
         username = request.form['username'] #checks db for login
         password = request.form['password']
 
-        encrypted_user = encrypt(username)
+        encrypted_user = encrypt(username) #stores encrypted data now
         encrypted_password = encrypt(password)
 
         user = Customer.query.filter_by(name=encrypted_user).first()
