@@ -1,8 +1,8 @@
 """
 Name:Merrick Moncure
-Date: 3/30/25
-Assignmnent: Module 11: website in flask
-make a simple flask website
+Date: 4/6/25
+Assignmnent: Module 12: website in flask
+encrypt necessary data
 Assumptions: NA
 All work below was performed by Merrick Moncure
 """
