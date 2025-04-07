@@ -148,6 +148,8 @@ def add_customer():
         if not form.login_password.data.strip():
             flash("Login password cannot be empty or only spaces", "error")
             return redirect(url_for('add_customer'))
+        #encrypt data
+        encrypted_name, encrypted_phone_number, encrypted_login_password = encrypt(form.name.data), encrypt(form.phone_number.data), encrypt(form.login_password.data)
         #creating the new customer
         new_customer = Customer(
             name=form.name.data.strip(),
