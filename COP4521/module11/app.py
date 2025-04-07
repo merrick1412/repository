@@ -73,6 +73,9 @@ def add_order():
                 price=form.price.data,
                 credit_card_num=form.credit_card.data.strip()
             )
+            #uses encrypted method in models
+            order.set_credit_card_num(form.credit_card.data)
+
             db.session.add(order)
             db.session.commit()
             flash("Order added successfully")
@@ -150,6 +153,10 @@ def add_customer():
             security_role_level=form.security_role_level.data,
             login_password=form.login_password.data.strip()
         )
+        new_customer.set_name(form.name.data) #new encrypted data
+        new_customer.set_phone_number(form.phone_number.data)
+        new_customer.set_login_password(form.login_password.data)
+
         db.session.add(new_customer)
         db.session.commit()
         flash("Customer added successfully!", "success")
@@ -159,6 +166,10 @@ def add_customer():
 @app.route('/list_customers')
 def list_customers():
     customers = Customer.query.all()
+    for customer in customers:
+        customer.name = customer.get_name() #decrypt all the data
+        customer.phone_number = customer.get_phone_number()
+        customer.login_password = customer.get_login_password()
     return render_template('list_customers.html', customers=customers)
 
 @app.route('/show_orders')
@@ -177,6 +188,8 @@ def list_orders():
 
     # Fetch all orders from the database
     orders = Order.query.all()
+    for order in orders:
+        order.credit_card_num = order.get_credit_card_num() #decrypt
 
     # Return the list_orders.html template with the orders data
     return render_template('list_orders.html', orders=orders)
