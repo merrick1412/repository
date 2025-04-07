@@ -40,3 +40,7 @@ class Order(db.Model):
     quantity = db.Column(db.Integer, nullable=False)
     price = db.Column(db.Float, nullable=False)
     credit_card_num = db.Column(db.String(16), nullable=False)
+    def set_credit_card_num(self, credit_card_num):
+        self.credit_card_num = encrypt(credit_card_num)
+    def get_credit_card_num(self):
+        return decrypt(self.credit_card_num)
