@@ -24,7 +24,106 @@ db.init_app(app)
 
 #using dml to fill initial table
 def test_data():
-    
+    customers = [
+        Customer(
+            encrypted_name="John Doe",
+            Age=30,
+            encrypted_phnum="1234567890",
+            SecurityLevel=1,
+            encrypted_login_password="password123"
+        ),
+        Customer(
+            encrypted_name="Jane Smith",
+            Age=28,
+            encrypted_phnum="0987654321",
+            SecurityLevel=2,
+            encrypted_login_password="securePass1"
+        ),
+        Customer(
+            encrypted_name="Alice Johnson",
+            Age=35,
+            encrypted_phnum="5555555555",
+            SecurityLevel=1,
+            encrypted_login_password="alicePass3"
+        ),
+        Customer(
+            encrypted_name="Bob Brown",
+            Age=40,
+            encrypted_phnum="6666666666",
+            SecurityLevel=2,
+            encrypted_login_password="bobSecure123"
+        ),
+        Customer(
+            encrypted_name="Charlie Green",
+            Age=50,
+            encrypted_phnum="7777777777",
+            SecurityLevel=3,
+            encrypted_login_password="charliePass2"
+        ),
+        Customer(
+            encrypted_name="Dana White",
+            Age=22,
+            encrypted_phnum="8888888888",
+            SecurityLevel=1,
+            encrypted_login_password="dana123"
+        )
+    ]
+
+    # Add and commit customers to the database
+    for customer in customers:
+        db.session.add(customer)
+    db.session.commit()
+
+    # Adding sample orders with encrypted CreditCardNum
+    orders = [
+        Order(
+            CustId=1,
+            ItemSkewNum="ABC123",
+            Quantity=1,
+            Price=100,
+            encrypted_credit_card_num="4111111111111111"
+        ),
+        Order(
+            CustId=2,
+            ItemSkewNum="DEF456",
+            Quantity=2,
+            Price=50,
+            encrypted_credit_card_num="4222222222222222"
+        ),
+        Order(
+            CustId=3,
+            ItemSkewNum="GHI789",
+            Quantity=1,
+            Price=200,
+            encrypted_credit_card_num="4333333333333333"
+        ),
+        Order(
+            CustId=4,
+            ItemSkewNum="JKL101",
+            Quantity=3,
+            Price=30,
+            encrypted_credit_card_num="4444444444444444"
+        ),
+        Order(
+            CustId=5,
+            ItemSkewNum="MNO202",
+            Quantity=2,
+            Price=120,
+            encrypted_credit_card_num="4555555555555555"
+        ),
+        Order(
+            CustId=6,
+            ItemSkewNum="PQR303",
+            Quantity=4,
+            Price=80,
+            encrypted_credit_card_num="4666666666666666"
+        )
+    ]
+
+    # Add and commit orders to the database
+    for order in orders:
+        db.session.add(order)
+    db.session.commit()
 
 @app.before_request
 def before_request():
@@ -208,4 +307,5 @@ if __name__ == '__main__':
             db.create_all()  # Create tables if they don't exist
         except Exception as e:
             print(f"Error during database initialization: {str(e)}")
+    test_data()
     app.run(debug=True)
