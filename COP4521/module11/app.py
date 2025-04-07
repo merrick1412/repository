@@ -10,7 +10,7 @@ from flask import Flask, render_template, redirect, url_for, request, flash, ses
 from models import db, Customer, Order
 from forms import CustomerForm, OrderForm
 from config import Config
-from cryptography.fernet import Fernet
+from encrypt import encrypt,decrypt
 import sqlite3
 
 
@@ -108,9 +108,12 @@ def login():
         username = request.form['username'] #checks db for login
         password = request.form['password']
 
-        user = Customer.query.filter_by(name=username).first()
+        encrypted_user = encrypt(username)
+        encrypted_password = encrypt(password)
 
-        if user and user.login_password == password:
+        user = Customer.query.filter_by(name=encrypted_user).first()
+
+        if user and user.login_password == encrypted_password:
             session['username'] = user.name
             session['security_level'] = user.security_role_level
             flash("Login successful!")

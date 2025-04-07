@@ -1,5 +1,5 @@
 from flask_sqlalchemy import SQLAlchemy
-from cryptography.fernet import Fernet
+from encrypt import encrypt, decrypt
 db = SQLAlchemy()
 
 class Customer(db.Model):

@@ -4,7 +4,7 @@ from cryptography.fernet import Fernet
 key = Fernet.generate_key()
 cipher_suite = Fernet(key)
 
-def generae_key():
+def generate_key():
     return Fernet.generate_key()
 
 def encrypt(message):
