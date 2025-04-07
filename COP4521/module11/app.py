@@ -14,12 +14,12 @@ from encrypt import encrypt,decrypt
 import sqlite3
 
 
-db.engine.execute("DROP TABLE IF EXISTS Customer")
-db.engine.execute("DROP TABLE IF EXISTS CustOrder")
+
 app = Flask(__name__)
 app.config.from_object(Config)
 print("running app")
 db.init_app(app)
+
 
 
 #using dml to fill initial table
@@ -302,10 +302,8 @@ def result():
 #makes a table
 if __name__ == '__main__':
     with app.app_context():
-        print("running here creatall")
-        try:
+        
             db.create_all()  # Create tables if they don't exist
-        except Exception as e:
-            print(f"Error during database initialization: {str(e)}")
+
     test_data()
     app.run(debug=True)
