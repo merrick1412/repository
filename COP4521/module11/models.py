@@ -1,6 +1,18 @@
 from flask_sqlalchemy import SQLAlchemy
+from cryptography.fernet import Fernet
 db = SQLAlchemy()
+#key
+key = Fernet.generate_key()
+cipher_suite = Fernet(key)
 
+def encrypt(message):
+    if message:
+        return cipher_suite.encrypt(message.encode('utf-8'))
+    return None
+def decrypt(encrypted):
+    if encrypted:
+        return cipher_suite.decrypt(encrypted).decode('utf-8')
+    return None
 class Customer(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), nullable=False)
@@ -8,19 +20,18 @@ class Customer(db.Model):
     phone_number = db.Column(db.String(15), nullable=False)
     security_role_level = db.Column(db.Integer, nullable=False)
     login_password = db.Column(db.String(100), nullable=False)
-
     def set_name(self, name):
-        self.name = encrypt_data(name)
+        self.name = encrypt(name)
     def get_name(self):
-        return decrypt_data(self.name)
+        return decrypt(self.name)
     def set_phone_number(self, phone_number):
-        self.phone_number = encrypt_data(phone_number)
+        self.phone_number = encrypt(phone_number)
     def get_phone_number(self):
-        return decrypt_data(self.phone_number)
+        return decrypt(self.phone_number)
     def set_login_password(self, password):
-        self.login_password = encrypt_data(password)
+        self.login_password = encrypt(password)
     def get_login_password(self):
-        return decrypt_data(self.login_password)
+        return decrypt(self.login_password)
 
 class Order(db.Model):
     id = db.Column(db.Integer, primary_key=True)
