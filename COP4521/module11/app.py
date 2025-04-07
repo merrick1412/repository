@@ -66,6 +66,7 @@ def add_order():
             if not credit_card:
                 flash("Credit Card number cannot be empty or only spaces", "error")
                 return redirect(url_for('add_order'))
+            encrypt_credit_card = encrypt(credit_card)
             order = Order(
                 customer_id=session['username'],
                 item_sku=form.item_sku.data.strip(),
