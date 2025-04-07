@@ -1,18 +1,7 @@
 from flask_sqlalchemy import SQLAlchemy
 from cryptography.fernet import Fernet
 db = SQLAlchemy()
-#key
-key = Fernet.generate_key()
-cipher_suite = Fernet(key)
 
-def encrypt(message):
-    if message:
-        return cipher_suite.encrypt(message.encode('utf-8'))
-    return None
-def decrypt(encrypted):
-    if encrypted:
-        return cipher_suite.decrypt(encrypted).decode('utf-8')
-    return None
 class Customer(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), nullable=False)
