@@ -7,6 +7,8 @@ Assumptions: NA
 All work below was performed by Merrick Moncure
 """
 from flask import Flask, render_template, redirect, url_for, request, flash, session
+from sqlalchemy import text
+
 from models import db, Customer, Order
 from forms import CustomerForm, OrderForm
 from config import Config
@@ -302,8 +304,8 @@ def result():
 #makes a table
 if __name__ == '__main__':
     with app.app_context():
-        db.session.execute("DROP TABLE IF EXISTS Customer") #drop tables
-        db.session.execute("DROP TABLE IF EXISTS Order")
+        db.session.execute(text("DROP TABLE IF EXISTS Customer")) #drop tables
+        db.session.execute(text("DROP TABLE IF EXISTS Order"))
         db.create_all()  # Create tables
 
     test_data()
