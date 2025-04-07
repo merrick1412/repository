@@ -3,7 +3,7 @@ from encrypt import encrypt, decrypt
 db = SQLAlchemy()
 
 class Customer(db.Model):
-    __tablename__ = 'Customer'
+    __tablename__ = 'customer'
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), nullable=False)
     age = db.Column(db.Integer, nullable=False)
@@ -24,7 +24,7 @@ class Customer(db.Model):
         return decrypt(self.login_password)
 
 class Order(db.Model):
-    __tablename__ = 'Order'
+    __tablename__ = 'order'
     id = db.Column(db.Integer, primary_key=True)
     customer_id = db.Column(db.Integer, db.ForeignKey('customer.id'), nullable=False)
     item_sku = db.Column(db.String(50), nullable=False)
