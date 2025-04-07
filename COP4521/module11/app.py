@@ -72,7 +72,7 @@ def add_order():
                 item_sku=form.item_sku.data.strip(),
                 quantity=form.quantity.data,
                 price=form.price.data,
-                credit_card_num=form.credit_card.data.strip()
+                credit_card_num=encrypt_credit_card
             )
             #uses encrypted method in models
             order.set_credit_card_num(form.credit_card.data)
