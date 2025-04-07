@@ -70,6 +70,7 @@ def test_data():
             security_role_level=1,
             login_password="dana123"
         )
+    ]
 
 @app.before_request
 def before_request():
