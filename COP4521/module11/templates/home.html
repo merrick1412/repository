@@ -5,10 +5,25 @@
 </head>
 <body>
     <h1>Welcome to the Customer Management System</h1>
-    <ul>
-        <li><a href="{{ url_for('add_customer') }}">Add New Customer</a></li>
-        <li><a href="{{ url_for('list_customers') }}">List Customers</a></li>
-        <li><a href="{{ url_for('list_orders') }}">List Orders</a></li>
-    </ul>
+
+    {% if username %}
+        <p>Hello, {{ username }}! (Security Level: {{ security_level }})</p>
+
+        <ul>
+            <li><a href="{{ url_for('add_order') }}">Place New Order</a></li>
+            <li><a href="{{ url_for('show_orders') }}">View My Orders</a></li>
+
+            {% if security_level >= 2 %}
+                <li><a href="{{ url_for('add_customer') }}">Add New Customer</a></li>
+                <li><a href="{{ url_for('list_customers') }}">List All Customers</a></li>
+                <li><a href="{{ url_for('list_orders') }}">List All Orders</a></li>
+            {% endif %}
+
+            <li><a href="{{ url_for('logout') }}">Logout</a></li>
+        </ul>
+    {% else %}
+        <p>You are not logged in.</p>
+        <a href="{{ url_for('login') }}">Login</a>
+    {% endif %}
 </body>
 </html>
