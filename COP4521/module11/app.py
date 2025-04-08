@@ -167,12 +167,7 @@ def login():
                 user = u
                 break
 
-        if user and user.login_password == password:
-            session['username'] = user.get_name()
-            session['security_level'] = user.security_role_level
-            flash("Login successful!")
-            return redirect(url_for('home'))
-        else:
+        
             flash("Invalid login!")
             return render_template('login.html')
 
