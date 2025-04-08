@@ -12,6 +12,4 @@ def encrypt(message):
         return cipher_suite.encrypt(message.encode('utf-8'))
     return None
 def decrypt(encrypted):
-    if encrypted:
-        return cipher_suite.decrypt(encrypted).decode('utf-8')
-    return None
+    return cipher_suite.decrypt(encrypted.encode()).decode('utf-8')
