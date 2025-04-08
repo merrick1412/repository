@@ -6,6 +6,7 @@ encrypt necessary data
 Assumptions: NA
 All work below was performed by Merrick Moncure
 """
+from cryptography import fernet
 from flask import Flask, render_template, redirect, url_for, request, flash, session
 from sqlalchemy import text
 
@@ -236,6 +237,11 @@ def show_orders():
         flash("You must log in first")
         return redirect(url_for('login')) #make sure you see your orders
     user_orders = Order.query.filter_by(customer_id=session['username']).all()
+    for order in user_orders:
+        try:
+            order.credit_card_num = fernet.decrypt(order.credit_card_num.encode()).decode()
+        except Exception as e:
+            order.credit_card_num = '[Decryption Failed]'
     return render_template('show_orders.html',orders=user_orders)
 @app.route('/list_orders')
 def list_orders():
