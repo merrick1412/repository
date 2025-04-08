@@ -254,7 +254,7 @@ def list_orders():
     orders = Order.query.all()
     for order in orders:
         customer = Customer.query.get(order.customer_id)
-        order.customer_name = f"{customer.name}" if customer else "Unknown"
+        order.customer_name = f"{customer.get_name()}" if customer else "Unknown"
 
         order.product = order.item_sku  # or resolve SKU to a product name if needed
         order.status = "Processed"  # placeholder or pull from order.status field if available
