@@ -219,12 +219,16 @@ def login():
         username = request.form['username'] #checks db for login
         password = request.form['password']
 
-        encrypted_user = encrypt(username) #stores encrypted data now
-        encrypted_password = encrypt(password)
+        all_users = Customer.query.all()
 
-        user = Customer.query.filter_by(name=encrypted_user).first()
+        user = None
 
-        if user and user.login_password == encrypted_password:
+        for u in all_users:
+            if u.get_name() == username:
+                user = u
+                break
+
+        if user and user.login_password == password:
             session['username'] = user.get_name()
             session['security_level'] = user.security_role_level
             flash("Login successful!")
