@@ -239,7 +239,7 @@ def show_orders():
     user_orders = Order.query.filter_by(customer_id=session['username']).all()
     for order in user_orders:
         try:
-            order.credit_card_num = decrypt(order.credit_card_num.encode()).decode()
+            order.credit_card_num = order.get_credit_card_num()
         except Exception as e:
             order.credit_card_num = '[Decryption Failed]'
     return render_template('show_orders.html',orders=user_orders)
