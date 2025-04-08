@@ -167,9 +167,15 @@ def login():
                 user = u
                 break
 
-        
-            flash("Invalid login!")
-            return render_template('login.html')
+        if user:
+            decrypted_password = user.get_login_password()
+            if decrypted_password == password:
+                session['username'] = user.get_name()
+                session['security_level'] = user.security_role_level
+                flash("Login successful!")
+                return redirect(url_for('home'))
+        flash("Invalid login!")
+        return render_template('login.html')
 
     return render_template('login.html')
 
