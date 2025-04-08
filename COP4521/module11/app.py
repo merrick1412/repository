@@ -30,40 +30,10 @@ def test_data():
         # Create customers and use setter methods for encrypted fields
         customers = [
             Customer(
-                name="John Doe",
                 age=30,
-                phone_number="1234567890",  # plain phone number, will be encrypted
                 security_role_level=1,
-                login_password="password123"  # plain password, will be encrypted
             ),
-            Customer(
-                name=encrypt("John Doe"),
-                age=28,
-                phone_number="0987654321",
-                security_role_level=2,
-                login_password="securePass1"
-            ),
-            Customer(
-                name="Alice Johnson",
-                age=35,
-                phone_number="5555555555",
-                security_role_level=1,
-                login_password="alicePass3"
-            ),
-            Customer(
-                name="Bob Brown",
-                age=40,
-                phone_number="6666666666",
-                security_role_level=2,
-                login_password="bobSecure123"
-            ),
-            Customer(
-                name="Charlie Green",
-                age=50,
-                phone_number="7777777777",
-                security_role_level=3,
-                login_password="charliePass2"
-            ),
+
             Customer(
                 name="Dana White",
                 age=22,
