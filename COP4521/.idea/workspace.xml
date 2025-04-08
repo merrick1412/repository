@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="922b86c1-b38b-4f38-a508-cd1fe24116ae" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/module11/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/module11/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/module11/instance/customers" beforeDir="false" afterPath="$PROJECT_DIR$/module11/instance/customers" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -155,7 +154,7 @@
       <workItem from="1743386569024" duration="1250000" />
       <workItem from="1743993130199" duration="3856000" />
       <workItem from="1743997311924" duration="508000" />
-      <workItem from="1744075044092" duration="2433000" />
+      <workItem from="1744075044092" duration="2490000" />
     </task>
     <servers />
   </component>
