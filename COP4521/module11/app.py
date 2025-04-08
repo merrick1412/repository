@@ -225,7 +225,7 @@ def login():
         user = Customer.query.filter_by(name=encrypted_user).first()
 
         if user and user.login_password == encrypted_password:
-            session['username'] = user.get_name
+            session['username'] = user.get_name()
             session['security_level'] = user.security_role_level
             flash("Login successful!")
             return redirect(url_for('home'))
