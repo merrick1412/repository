@@ -1,4 +1,4 @@
-from cryptography.fernet import Fernet
+from cryptography.fernet import Fernet, InvalidToken
 import os
 
 # Path to key file
@@ -27,8 +27,8 @@ def encrypt(message):
     return None
 
 def decrypt(encrypted):
-    try encrypted:
+    try:
         return cipher_suite.decrypt(encrypted.encode('utf-8')).decode('utf-8')
     except InvalidToken:
-    print("Invalid token detected!")
-    return None
+        print("Invalid token detected!")
+        return None
