@@ -253,7 +253,11 @@ def list_orders():
     # Fetch all orders from the database
     orders = Order.query.all()
     for order in orders:
-        order.credit_card_num = order.get_credit_card_num() #decrypt
+        customer = Customer.query.get(order.customer_id)
+        order.customer_name = f"{customer.first_name} {customer.last_name}" if customer else "Unknown"
+
+        order.product = order.item_sku  # or resolve SKU to a product name if needed
+        order.status = "Processed"  # placeholder or pull from order.status field if available
 
     # Return the list_orders.html template with the orders data
     return render_template('list_orders.html', orders=orders)
