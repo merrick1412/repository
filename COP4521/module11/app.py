@@ -28,81 +28,50 @@ db.init_app(app)
 def test_data():
     with app.app_context():
         # Create customers and use setter methods for encrypted fields
-        customers = [
-            Customer(
-                age=30,
-                security_role_level=1,
-            ),
+        customers = []
 
-            Customer(
-                name="Dana White",
-                age=22,
-                phone_number="8888888888",
-                security_role_level=1,
-                login_password="dana123"
-            )
+        # List of raw customer info (unencrypted)
+        customer_data = [
+            ("John Doe", 30, "1234567890", 1, "password123"),
+            ("Jane Smith", 28, "0987654321", 2, "securePass1"),
+            ("Alice Johnson", 35, "5555555555", 1, "alicePass3"),
+            ("Bob Brown", 40, "6666666666", 2, "bobSecure123"),
+            ("Charlie Green", 50, "7777777777", 3, "charliePass2"),
+            ("Dana White", 22, "8888888888", 1, "dana123")
         ]
-        # Encrypt phone number and login password for each customer using setter methods
-        for customer in customers:
-            customer.set_phone_number(customer.phone_number)
-            customer.set_login_password(customer.login_password)
 
-            # Add customer to the database
+        for name, age, phone, role, password in customer_data:
+            customer = Customer(
+                age=age,
+                security_role_level=role
+            )
+            customer.set_name(name)
+            customer.set_phone_number(phone)
+            customer.set_login_password(password)
+
+            customers.append(customer)
             db.session.add(customer)
 
         db.session.commit()
 
-        # Create orders and use setter method for encrypted credit card number
-        orders = [
-            Order(
-                customer_id=1,  # use the actual customer_id for the relation
-                item_sku="ABC123",
-                quantity=1,
-                price=100,
-                credit_card_num="4111111111111111"  # plain credit card number, will be encrypted
-            ),
-            Order(
-                customer_id=2,
-                item_sku="DEF456",
-                quantity=2,
-                price=50,
-                credit_card_num="4222222222222222"
-            ),
-            Order(
-                customer_id=3,
-                item_sku="GHI789",
-                quantity=1,
-                price=200,
-                credit_card_num="4333333333333333"
-            ),
-            Order(
-                customer_id=4,
-                item_sku="JKL101",
-                quantity=3,
-                price=30,
-                credit_card_num="4444444444444444"
-            ),
-            Order(
-                customer_id=5,
-                item_sku="MNO202",
-                quantity=2,
-                price=120,
-                credit_card_num="4555555555555555"
-            ),
-            Order(
-                customer_id=6,
-                item_sku="PQR303",
-                quantity=4,
-                price=80,
-                credit_card_num="4666666666666666"
-            )
+        # Now that customer IDs are assigned, add orders
+        order_data = [
+            (1, "ABC123", 1, 100, "4111111111111111"),
+            (2, "DEF456", 2, 50, "4222222222222222"),
+            (3, "GHI789", 1, 200, "4333333333333333"),
+            (4, "JKL101", 3, 30, "4444444444444444"),
+            (5, "MNO202", 2, 120, "4555555555555555"),
+            (6, "PQR303", 4, 80, "4666666666666666")
         ]
 
-        # Encrypt credit card number for each order using setter method
-        for order in orders:
-            order.set_credit_card_num(order.credit_card_num)
-
-            # Add order to the database
+        for cust_id, sku, quantity, price, cc_num in order_data:
+            order = Order(
+                customer_id=cust_id,
+                item_sku=sku,
+                quantity=quantity,
+                price=price
+            )
+            order.set_credit_card_num(cc_num)
             db.session.add(order)
 
         db.session.commit()
