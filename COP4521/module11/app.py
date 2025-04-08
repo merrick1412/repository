@@ -37,7 +37,7 @@ def test_data():
                 login_password="password123"  # plain password, will be encrypted
             ),
             Customer(
-                name="Jane Smith",
+                name=encrypt("John Doe"),
                 age=28,
                 phone_number="0987654321",
                 security_role_level=2,
