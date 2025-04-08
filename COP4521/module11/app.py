@@ -39,7 +39,7 @@ def test_data():
             Customer(
                 name=encrypt("John Doe"),
                 age=28,
-                phone_number="0987654321",
+                phone_number=encrypt("1234567890"),
                 security_role_level=2,
                 login_password="securePass1"
             ),
