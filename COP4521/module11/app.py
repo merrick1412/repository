@@ -274,22 +274,39 @@ def submit_order_socket():
         return redirect(url_for('login'))
 
     form = OrderForm()
+
     if request.method == 'POST' and form.validate_on_submit():
-        cust_id = session['username']
+        username = session['username']
+
+        #  Find the actual numeric customer ID from the name
+        all_customers = Customer.query.all()
+        cust_id = None
+        for c in all_customers:
+            if c.get_name() == username:
+                cust_id = c.id
+                break
+
+        if not cust_id:
+            flash("Customer not found in the database.")
+            return render_template("add_order.html", form=form)
+
+        # Get cleaned form data
         item_sku = form.item_sku.data.strip()
         quantity = form.quantity.data
         price = form.price.data
         credit_card = form.credit_card.data.strip()
 
-        # Server-side manual validation
+        # Basic validation (extra)
         if not item_sku or not credit_card or quantity <= 0 or price <= 0:
-            flash("One or more fields are invalid.")
+            flash("Validation failed: Invalid field values.")
             return render_template("add_order.html", form=form)
 
         try:
+            #  Use numeric customer ID in the message
             message = f"{cust_id}^%${item_sku}^%${quantity}^%${price}^%${credit_card}"
             encrypted_message = encrypt(message)
 
+            #  Send to socket server
             with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
                 s.connect(('localhost', 9999))
                 s.sendall(encrypted_message.encode('utf-8'))
@@ -297,13 +314,13 @@ def submit_order_socket():
             return redirect(url_for("result", msg="Order successfully sent"))
 
         except Exception as e:
-            print("Error:", e)
+            print("Socket Error:", e)
             return redirect(url_for("result", msg="Error - Order NOT sent"))
 
-    #  Render the form on GET or validation failure
+    # Show form on GET or failed POST
     return render_template("add_order.html", form=form)
 
-    return redirect(url_for("result", msg="Validation failed"))
+
 if __name__ == '__main__':
     with app.app_context():
         db.session.execute(text("DROP TABLE IF EXISTS Customer")) #drop tables
