@@ -18,6 +18,10 @@
                 <li><a href="{{ url_for('list_customers') }}">List All Customers</a></li>
                 <li><a href="{{ url_for('list_orders') }}">List All Orders</a></li>
             {% endif %}
+        
+            {% if security_level == 2 %}
+               <li><a href="{{ url_for('submit_order_socket') }}">Submit an Order</a></li>
+            {% endif %}
 
             <li><a href="{{ url_for('logout') }}">Logout</a></li>
         </ul>
