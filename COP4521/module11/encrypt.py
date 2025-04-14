@@ -2,7 +2,7 @@ from cryptography.fernet import Fernet, InvalidToken
 import os
 
 # Path to key file
-KEY_FILE = 'secret.key'
+KEY_FILE = os.path.join(os.path.dirname(__file__), 'secret.key')
 
 def generate_key():
     return Fernet.generate_key()
