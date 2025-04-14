@@ -67,6 +67,7 @@ class OrderHandler(socketserver.BaseRequestHandler):
 
 if __name__ == "__main__":
     HOST, PORT = "localhost", 9999
-    with socketserver.TCPServer((HOST, PORT), OrderHandler) as server:
+    with app.app_context():
         print(f"Order processing server running on {HOST}:{PORT}")
-        server.serve_forever()
+        with socketserver.TCPServer((HOST, PORT), OrderHandler) as server:
+            server.serve_forever()
