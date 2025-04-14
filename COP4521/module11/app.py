@@ -274,25 +274,22 @@ def submit_order_socket():
         return redirect(url_for('login'))
 
     form = OrderForm()
-    if form.validate_on_submit():
+    if request.method == 'POST' and form.validate_on_submit():
         cust_id = session['username']
         item_sku = form.item_sku.data.strip()
         quantity = form.quantity.data
         price = form.price.data
         credit_card = form.credit_card.data.strip()
 
-        # Validate
+        # Server-side manual validation
         if not item_sku or not credit_card or quantity <= 0 or price <= 0:
-            return redirect(url_for("result", msg="Validation failed"))
+            flash("One or more fields are invalid.")
+            return render_template("add_order.html", form=form)
 
         try:
-            # Build message with separator
             message = f"{cust_id}^%${item_sku}^%${quantity}^%${price}^%${credit_card}"
-
-            # Encrypt
             encrypted_message = encrypt(message)
 
-            # Send to server
             with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
                 s.connect(('localhost', 9999))
                 s.sendall(encrypted_message.encode('utf-8'))
@@ -302,6 +299,9 @@ def submit_order_socket():
         except Exception as e:
             print("Error:", e)
             return redirect(url_for("result", msg="Error - Order NOT sent"))
+
+    #  Render the form on GET or validation failure
+    return render_template("add_order.html", form=form)
 
     return redirect(url_for("result", msg="Validation failed"))
 if __name__ == '__main__':
