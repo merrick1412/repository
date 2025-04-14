@@ -267,6 +267,43 @@ def result():
     msg = request.args.get('msg', 'No message provided')
     return render_template('result.html', msg=msg)
 #makes a table
+
+@app.route('/submit_order_socket', methods=['GET', 'POST'])
+def submit_order_socket():
+    if 'username' not in session:
+        return redirect(url_for('login'))
+
+    form = OrderForm()
+    if form.validate_on_submit():
+        cust_id = session['username']
+        item_sku = form.item_sku.data.strip()
+        quantity = form.quantity.data
+        price = form.price.data
+        credit_card = form.credit_card.data.strip()
+
+        # Validate
+        if not item_sku or not credit_card or quantity <= 0 or price <= 0:
+            return redirect(url_for("result", msg="Validation failed"))
+
+        try:
+            # Build message with separator
+            message = f"{cust_id}^%${item_sku}^%${quantity}^%${price}^%${credit_card}"
+
+            # Encrypt
+            encrypted_message = encrypt(message)
+
+            # Send to server
+            with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+                s.connect(('localhost', 9999))
+                s.sendall(encrypted_message.encode('utf-8'))
+
+            return redirect(url_for("result", msg="Order successfully sent"))
+
+        except Exception as e:
+            print("Error:", e)
+            return redirect(url_for("result", msg="Error - Order NOT sent"))
+
+    return redirect(url_for("result", msg="Validation failed"))
 if __name__ == '__main__':
     with app.app_context():
         db.session.execute(text("DROP TABLE IF EXISTS Customer")) #drop tables
