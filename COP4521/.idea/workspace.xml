@@ -21,6 +21,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "merrick1412"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/merrick1412/repository.git",
+    "accountId": "de0c655c-136c-455e-b044-5cd3eb855070"
+  }
+}]]></component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 1
 }</component>
@@ -154,6 +166,7 @@
       <workItem from="1743997311924" duration="508000" />
       <workItem from="1744075044092" duration="3992000" />
       <workItem from="1744228611994" duration="78000" />
+      <workItem from="1744596766223" duration="268000" />
     </task>
     <servers />
   </component>
@@ -163,6 +176,6 @@
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/COP4521$config.coverage" NAME="config Coverage Results" MODIFIED="1743382562542" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/module11" />
     <SUITE FILE_PATH="coverage/COP4521$app__1_.coverage" NAME="app (1) Coverage Results" MODIFIED="1743384776463" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/module10" />
-    <SUITE FILE_PATH="coverage/COP4521$app.coverage" NAME="app Coverage Results" MODIFIED="1744079253979" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/module11" />
+    <SUITE FILE_PATH="coverage/COP4521$app.coverage" NAME="app Coverage Results" MODIFIED="1744596947035" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/module11" />
   </component>
 </project>
