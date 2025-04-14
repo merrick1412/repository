@@ -255,12 +255,19 @@ def list_orders():
     orders = Order.query.all()
     for order in orders:
         customer = Customer.query.get(order.customer_id)
-        order.customer_name = f"{customer.get_name()}" if customer else "Unknown"
+        if customer:
+            try:
+                customer_name = customer.get_name()
+            except Exception as e:
+                print(f"Failed to decrypt name for customer_id {order.customer_id}: {e}")
+                customer_name = "Unknown"
+        else:
+            customer_name = "Unknown"
+        order.customer_name = customer_name
 
-        order.product = order.item_sku  # or resolve SKU to a product name if needed
-        order.status = "Processed"  # placeholder or pull from order.status field if available
+        order.product = order.item_sku
+        order.status = "Processed"
 
-    # Return the list_orders.html template with the orders data
     return render_template('list_orders.html', orders=orders)
 @app.route('/result')
 def result():
