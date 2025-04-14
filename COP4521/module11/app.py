@@ -1,8 +1,8 @@
 """
 Name:Merrick Moncure
-Date: 4/6/25
-Assignmnent: Module 12: website in flask
-encrypt necessary data
+Date: 4/13/25
+Assignmnent: Module 13: website in flask
+use a socket server to send orders to the process_orders_server.py
 Assumptions: NA
 All work below was performed by Merrick Moncure
 """
