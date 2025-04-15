@@ -1,0 +1,9 @@
+.fp 5 cbi
+.ft cr
+.nf
+\f(CI/* this is a comment */\f(CR
+\f(CBint\f(CR main() {
+  \f(CBchar\f(CR c = \fI'a'\f(CR;
+  printf(\fB"hello world\n"\f(CR);
+  \f(CBreturn\f(CR \f50\f(CR;
+}
