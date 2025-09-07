@@ -1,8 +1,8 @@
 """
 Name: Merrick Moncure
-Date: 09/06/2025
+Date: 9/6/2025
 Assignment: Programming Project – Menu Driven App
-Due Date: (Insert the actual due date your instructor gave)
+Due Date: 9/8/25
 About this project:
     This project is a menu-driven Python program that lets the user
     add, edit, and display information about a Laptop.
