@@ -1,11 +1,19 @@
-# --------------------------------------------------------------
-# Name: Laptop App
-# Author: Merrick Moncure
-# Description:
-#   Small console app that lets a user Add, Edit, and Display a
-#   single Laptop record using a menu. Shows input validation loops
-#   for different data types (string/int/float) and simple functions.
-# --------------------------------------------------------------
+"""
+Name: Merrick Moncure
+Date: 09/06/2025
+Assignment: Programming Project – Menu Driven App
+Due Date: (Insert the actual due date your instructor gave)
+About this project:
+    This project is a menu-driven Python program that lets the user
+    add, edit, and display information about a Laptop.
+    The project demonstrates input validation loops,
+    range checking, and menu control flow.
+Assumptions:
+    - User will provide input through the console.
+    - All inputs are validated in loops until correct data is entered.
+    - Only one Laptop object is managed at a time.
+All work below was performed by Merrick Moncure
+"""
 
 # ------------------------- Validation --------------------------
 
