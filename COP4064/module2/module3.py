@@ -44,7 +44,11 @@ DB_PATH = "laptops.db"          # file where data is saved
 DB_AUTOSAVE = True              # save after every write
 
 def get_db():
-    return pickledb.load(DB_PATH, DB_AUTOSAVE)  # open or create db
+    # Works with both official (has load) and single-file forks (only PickleDB)
+    try:
+        return pickledb.load(DB_PATH, DB_AUTOSAVE)
+    except AttributeError:
+        return pickledb.PickleDB(DB_PATH, DB_AUTOSAVE)
 
 def today_key():
     return date.today().isoformat()             # key is today's date
