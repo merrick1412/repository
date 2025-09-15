@@ -22,6 +22,23 @@ All work below was performed by Merrick Moncure
 import pickledb
 from datetime import date
 
+def _open_pickledb(path, autosave):
+    """
+    Return a DB instance even if this pickledb build doesn't have load().
+    Works with official builds (load) and older/forked builds (PickleDB).
+    """
+    if hasattr(pickledb, "load"):
+        return pickledb.load(path, autosave)
+
+    # fallback: some builds only export the class
+    if hasattr(pickledb, "PickleDB"):
+        return pickledb.PickleDB(path, autosave)
+
+    # last-resort helpful error
+    raise RuntimeError(
+        "Installed 'pickledb' module exposes neither load() nor PickleDB."
+    )
+
 # ----- database helpers -----
 DB_PATH = "laptops.db"          # file where data is saved
 DB_AUTOSAVE = True              # save after every write
