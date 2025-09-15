@@ -28,8 +28,8 @@ from datetime import date
 DB_PATH = "laptops.db"          # file where data is saved
 DB_AUTOSAVE = True              # save after every write
 
-#def get_db():
-#    return pickledb.load(DB_PATH, DB_AUTOSAVE)  # open or create db
+def get_db():
+    return pickledb.load(DB_PATH, DB_AUTOSAVE)  # open or create db
 
 def today_key():
     return date.today().isoformat()             # key is today's date
