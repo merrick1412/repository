@@ -19,9 +19,7 @@ All work below was performed by Merrick Moncure
 # Module 3 – Key/Value (pickleDB) Menu App
 # Stores one laptop entry per day using pickleDB.
 
-import pickledb, sys
-print("[pickledb] using:", getattr(pickledb, "__file__", "<no __file__>"))
-print("[pickledb] has load():", hasattr(pickledb, "load"))
+import pickledb
 from datetime import date
 
 # ----- database helpers -----
