@@ -1,8 +1,8 @@
 """
 Name: Merrick Moncure
-Date: 9/6/2025
-Assignment: Programming Project – Menu Driven App
-Due Date: 9/8/25
+Date: 9/14/2025
+Assignment: Module 3 – Key/Value (pickleDB) Menu App
+Due Date: 9/14/25
 About this project:
     This project is a menu-driven Python program that lets the user
     add, edit, and display information about a Laptop.
