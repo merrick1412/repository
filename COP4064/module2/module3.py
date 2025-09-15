@@ -22,53 +22,14 @@ All work below was performed by Merrick Moncure
 import pickledb
 from datetime import date
 
-def _open_pickledb(path, autosave):
-    """
-    Return a DB instance even if this pickledb build doesn't have load().
-    Works with official builds (load) and older/forked builds (PickleDB).
-    """
-    if hasattr(pickledb, "load"):
-        return pickledb.load(path, autosave)
 
-    # fallback: some builds only export the class
-    if hasattr(pickledb, "PickleDB"):
-        return pickledb.PickleDB(path, autosave)
-
-    # last-resort helpful error
-    raise RuntimeError(
-        "Installed 'pickledb' module exposes neither load() nor PickleDB."
-    )
 
 # ----- database helpers -----
 DB_PATH = "laptops.db"          # file where data is saved
 DB_AUTOSAVE = True              # save after every write
 
 def get_db():
-    # Try the standard API first
-    try:
-        return pickledb.load(DB_PATH, DB_AUTOSAVE)   # official package
-    except AttributeError:
-        pass  # single-file/forked build without load()
-
-    # Fallback to class-based API, handling different constructor signatures
-    if hasattr(pickledb, "PickleDB"):
-        try:
-            # some builds: PickleDB(path, autosave)
-            return pickledb.PickleDB(DB_PATH, DB_AUTOSAVE)
-        except TypeError:
-            # your build: PickleDB(path) only
-            db = pickledb.PickleDB(DB_PATH)
-            # try to enable autosave if supported
-            for flag in ("autosave", "auto_dump", "autosave_enabled"):
-                if hasattr(db, flag):
-                    try:
-                        setattr(db, flag, bool(DB_AUTOSAVE))
-                        break
-                    except Exception:
-                        pass
-            return db
-
-    raise RuntimeError("pickledb module exposes neither load() nor a usable PickleDB class.")
+    return pickledb.load(DB_PATH, DB_AUTOSAVE)  # open or create db
 
 def today_key():
     return date.today().isoformat()             # key is today's date
