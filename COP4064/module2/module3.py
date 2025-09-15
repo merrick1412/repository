@@ -15,92 +15,77 @@ Assumptions:
 All work below was performed by Merrick Moncure
 """
 
+# Merrick Moncure
+# Module 3 – Key/Value (pickleDB) Menu App
+# Stores one laptop entry per day using pickleDB.
+
 import pickledb
 from datetime import date
 
-# ------------------------- Persistence -------------------------
-
-DB_PATH = "laptops.db"          # the pickleDB file on disk
-DB_AUTOSAVE = True              # flush after every write
+# ----- database helpers -----
+DB_PATH = "laptops.db"          # file where data is saved
+DB_AUTOSAVE = True              # save after every write
 
 def get_db():
-    # Opens or creates the db file
-    return pickledb.load(DB_PATH, DB_AUTOSAVE)
+    return pickledb.load(DB_PATH, DB_AUTOSAVE)  # open or create db
 
-def today_key() -> str:
-    return date.today().isoformat()   # e.g., "2025-09-06"
+def today_key():
+    return date.today().isoformat()             # key is today's date
 
-def has_today_item(db) -> bool:
-    return db.exists(today_key())
+def has_today_item(db):
+    return db.exists(today_key())               # check if today's entry exists
 
 def get_today_item(db):
-    return db.get(today_key())
+    return db.get(today_key())                  # fetch today's entry
 
 def set_today_item(db, item_dict):
-    db.set(today_key(), item_dict)
+    db.set(today_key(), item_dict)              # store today's entry
 
 def delete_today_item(db):
     if has_today_item(db):
-        db.rem(today_key())
+        db.rem(today_key())                     # remove today's entry
 
-# ------------------------- Validation --------------------------
-
+# ----- input validation -----
 def get_valid_string(prompt, min_len=5):
-    """Ask until we get a non-empty string with at least min_len chars."""
+    # require at least min_len non-space characters
     while True:
         value = input(prompt)
         if len(value.strip()) < min_len:
-            print(f"Error: please enter at least {min_len} non-space characters.")
+            print(f"Error: need at least {min_len} characters.")
         else:
             return value
 
 def get_valid_int(prompt, lo, hi):
-    """Ask until we get an int in [lo, hi]."""
+    # require integer in given range
     while True:
-        raw = input(prompt)
         try:
-            n = int(raw)
+            n = int(input(prompt))
+            if lo <= n <= hi:
+                return n
+            print(f"Error: number must be {lo}–{hi}.")
         except ValueError:
-            print("Error: enter a whole number (e.g., 8).")
-            continue
-        if not (lo <= n <= hi):
-            print(f"Error: number must be between {lo} and {hi}.")
-            continue
-        return n
+            print("Error: enter a whole number.")
 
 def get_valid_float(prompt, lo, hi):
-    """Ask until we get a float in [lo, hi]."""
+    # require float in given range
     while True:
-        raw = input(prompt)
         try:
-            x = float(raw)
+            x = float(input(prompt))
+            if lo <= x <= hi:
+                return x
+            print(f"Error: number must be {lo}–{hi}.")
         except ValueError:
-            print("Error: enter a real number (decimals allowed).")
-            continue
-        if not (lo <= x <= hi):
-            print(f"Error: number must be between {lo} and {hi}.")
-            continue
-        return x
+            print("Error: enter a real number.")
 
-# ------------------------- App Logic ---------------------------
-
+# ----- menu actions -----
 def add_laptop():
-    """
-    Create a laptop dict after validating each field.
-    Attributes (meets assignment rules):
-      - model_name: string, min length 5, not all spaces
-      - ram_gb:     int in [2, 128]           (whole number w/ range)
-      - storage_gb: int in [64, 8192]         (whole number w/ range)
-      - screen_in:  float in [10.0, 18.4]     (real number w/ range)
-      - price_usd:  float in [100.0, 10000.0] (real number w/ range)
-    """
-    print("\nAdd Laptop\n----------")
+    # collect and validate new laptop info
+    print("\nAdd Laptop")
     model_name = get_valid_string("Model name (min 5 chars): ", 5)
-    ram_gb     = get_valid_int("RAM in GB (2..128): ", 2, 128)
-    storage_gb = get_valid_int("Storage in GB (64..8192): ", 64, 8192)
-    screen_in  = get_valid_float("Screen size inches (10.0..18.4): ", 10.0, 18.4)
-    price_usd  = get_valid_float("Price USD (100.00..10000.00): ", 100.0, 10000.0)
-
+    ram_gb     = get_valid_int("RAM GB (2–128): ", 2, 128)
+    storage_gb = get_valid_int("Storage GB (64–8192): ", 64, 8192)
+    screen_in  = get_valid_float("Screen inches (10.0–18.4): ", 10.0, 18.4)
+    price_usd  = get_valid_float("Price USD (100–10000): ", 100.0, 10000.0)
     print("\nLaptop saved!\n")
     return {
         "model_name": model_name,
@@ -111,32 +96,28 @@ def add_laptop():
     }
 
 def edit_laptop(existing):
-    """
-    Edit each attribute. Show current value and require a valid replacement.
-    (Enter is NOT accepted here—per spec we prompt until the new value is valid.)
-    """
-    print("\nEdit Laptop\n-----------")
-
+    # prompt for new values showing current ones
+    print("\nEdit Laptop")
     print(f"Current model name: {existing['model_name']}")
-    existing["model_name"] = get_valid_string("New model name (min 5 chars): ", 5)
+    existing["model_name"] = get_valid_string("New model name: ", 5)
 
-    print(f"Current RAM (GB): {existing['ram_gb']}")
-    existing["ram_gb"] = get_valid_int("New RAM in GB (2..128): ", 2, 128)
+    print(f"Current RAM: {existing['ram_gb']} GB")
+    existing["ram_gb"] = get_valid_int("New RAM GB (2–128): ", 2, 128)
 
-    print(f"Current Storage (GB): {existing['storage_gb']}")
-    existing["storage_gb"] = get_valid_int("New Storage in GB (64..8192): ", 64, 8192)
+    print(f"Current Storage: {existing['storage_gb']} GB")
+    existing["storage_gb"] = get_valid_int("New Storage GB (64–8192): ", 64, 8192)
 
-    print(f"Current Screen (in): {existing['screen_in']}")
-    existing["screen_in"] = get_valid_float("New Screen inches (10.0..18.4): ", 10.0, 18.4)
+    print(f"Current Screen: {existing['screen_in']} in")
+    existing["screen_in"] = get_valid_float("New Screen inches (10.0–18.4): ", 10.0, 18.4)
 
-    print(f"Current Price (USD): {existing['price_usd']}")
-    existing["price_usd"] = get_valid_float("New Price USD (100.00..10000.00): ", 100.0, 10000.0)
+    print(f"Current Price: ${existing['price_usd']}")
+    existing["price_usd"] = get_valid_float("New Price USD (100–10000): ", 100.0, 10000.0)
 
     print("\nLaptop updated!\n")
     return existing
 
 def display_laptop(item):
-    """Pretty-print the current laptop."""
+    # print laptop attributes
     print("\nCurrent Laptop")
     print("--------------")
     print(f"Model name : {item['model_name']}")
@@ -145,10 +126,9 @@ def display_laptop(item):
     print(f"Screen (in): {float(item['screen_in']):.1f}")
     print(f"Price (USD): ${float(item['price_usd']):,.2f}\n")
 
-# --------------------------- Menu ------------------------------
-
+# ----- menu control -----
 def menu_choice(valid_letters):
-    """Ask for a single-letter menu choice until it's valid."""
+    # loop until user enters a valid menu letter
     valid = [c.upper() for c in valid_letters]
     while True:
         choice = input("Select an option: ").strip().upper()
@@ -158,39 +138,26 @@ def menu_choice(valid_letters):
 
 def main():
     db = get_db()
-
     while True:
-        # Show the correct menu based on whether today's item exists
+        # show correct menu depending on whether today's entry exists
         if not has_today_item(db):
-            print("Main Menu")
-            print("A) Add  Laptop")
-            print("Q) Quit")
+            print("Main Menu\nA) Add Laptop\nQ) Quit")
             choice = menu_choice(["A", "Q"])
-
             if choice == "A":
-                item = add_laptop()
-                set_today_item(db, item)   # persist to pickledb
+                set_today_item(db, add_laptop())
             else:
                 print("Goodbye!")
                 break
-
         else:
-            print("Main Menu")
-            print("A) Edit    Laptop")
-            print("B) Display Laptop")
-            print("D) Delete  Laptop")
-            print("Q) Quit")
+            print("Main Menu\nA) Edit Laptop\nB) Display Laptop\nD) Delete Laptop\nQ) Quit")
             choice = menu_choice(["A", "B", "D", "Q"])
-
             if choice == "A":
-                current = get_today_item(db)
-                updated = edit_laptop(current)
-                set_today_item(db, updated)
+                set_today_item(db, edit_laptop(get_today_item(db)))
             elif choice == "B":
                 display_laptop(get_today_item(db))
             elif choice == "D":
                 delete_today_item(db)
-                print("Today's laptop entry has been deleted.\n")
+                print("Today's laptop entry deleted.\n")
             else:
                 print("Goodbye!")
                 break
