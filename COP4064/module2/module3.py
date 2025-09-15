@@ -9,9 +9,9 @@ About this project:
     The project demonstrates input validation loops,
     range checking, and menu control flow.
 Assumptions:
-    - User will provide input through the console.
-    - All inputs are validated in loops until correct data is entered.
-    - Only one Laptop object is managed at a time.
+- Stores one "Laptop" object per day in pickleDB.
+- Key is today's date "YYYY-MM-DD".
+- Implements Add/Edit/Display/Delete with input-validation loops.
 All work below was performed by Merrick Moncure
 """
 
