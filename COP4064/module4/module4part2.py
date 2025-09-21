@@ -4,11 +4,19 @@ Date: 9/21/2025
 Assignment: Module 4 – Key/Value (pickleDB) Menu App
 Due Date: 9/21/25
 About this project:
-    Part 2) SQLite DB Creation
-- Drops the table if it already exists
-- Creates a table with five attributes plus an auto-incrementing primary key
-- Inserts at least six rows of data
-- Uses a SELECT statement to display all rows
+- Starts from Module 3 (Laptop object in pickleDB) and extends it:
+  * Add/Edit/Display/Delete current-day Laptop in pickleDB
+  * Register (add) current Laptop to a relational DB (SQLite) table
+  * Display all Laptops from the relational DB
+  * Quit
+
+- pickleDB:
+  * Stores exactly one Laptop per day
+  * KEY = today's ISO date "YYYY-MM-DD" (to match Module 3 approach)
+
+- SQLite:
+  * Table 'laptops' with 5 attributes + id + entry_date
+  * DDL is created automatically if missing
 Assumptions:
 
 All work below was performed by Merrick Moncure
