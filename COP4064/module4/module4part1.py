@@ -10,8 +10,6 @@ About this project:
 - Inserts at least six rows of data
 - Uses a SELECT statement to display all rows
 Assumptions:
-- Stores one "Laptop" object per day in pickleDB.
-- Key is today's date "YYYY-MM-DD".
-- Implements Add/Edit/Display/Delete with input-validation loops.
+
 All work below was performed by Merrick Moncure
 """
