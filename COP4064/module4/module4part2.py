@@ -1,8 +1,32 @@
+"""
+Name: Merrick Moncure
+Date: 9/21/2025
+Assignment: Module 4 – Key/Value (pickleDB) Menu App
+Due Date: 9/21/25
+About this project:
+- Starts from Module 3 (Laptop object in pickleDB) and extends it:
+  * Add/Edit/Display/Delete current-day Laptop in pickleDB
+  * Register (add) current Laptop to a relational DB (SQLite) table
+  * Display all Laptops from the relational DB
+  * Quit
+
+- pickleDB:
+  * Stores exactly one Laptop per day
+  * KEY = today's ISO date "YYYY-MM-DD" (to match Module 3 approach)
+
+- SQLite:
+  * Table 'laptops' with 5 attributes + id + entry_date
+  * DDL is created automatically if missing
+Assumptions:
+
+All work below was performed by Merrick Moncure
+"""
+
 import sys
 import sqlite3
 from datetime import date
 from typing import Dict, Any
-import pickledb  # Changed: import pickledb module directly
+import pickledb
 
 SQLITE_PATH = "laptops_part2.db"
 KV_PATH = "laptops_kv.db"
@@ -87,7 +111,7 @@ def display_all_from_db():
 
 def load_kv():
     """Load pickleDB with auto_dump to persist on set/rem."""
-    return pickledb.load(KV_PATH, auto_dump=True)  # Changed: use pickledb.load() instead of PickleDB.load()
+    return pickledb.load(KV_PATH, auto_dump=True)
 
 def today_key() -> str:
     return date.today().isoformat()  # e.g., '2025-09-21'
