@@ -26,7 +26,7 @@ import sys
 import sqlite3
 from datetime import date
 from typing import Dict, Any
-from pickledb import PickleDB
+import pickledb
 
 SQLITE_PATH = "laptops_part2.db"
 KV_PATH = "laptops_kv.db"
@@ -111,7 +111,7 @@ def display_all_from_db():
 
 def load_kv():
     """Load pickleDB with auto_dump to persist on set/rem."""
-    return PickleDB.load(KV_PATH, auto_dump=True)
+    return pickledb.load(KV_PATH, auto_dump=True)
 
 def today_key() -> str:
     return date.today().isoformat()  # e.g., '2025-09-21'
