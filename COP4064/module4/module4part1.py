@@ -4,10 +4,11 @@ Date: 9/21/2025
 Assignment: Module 4 – Key/Value (pickleDB) Menu App
 Due Date: 9/21/25
 About this project:
-    This project is a menu-driven Python program that lets the user
-    add, edit, and display information about a Laptop.
-    The project demonstrates input validation loops,
-    range checking, and menu control flow.
+    Part 1) SQLite DB Creation
+- Drops the table if it already exists
+- Creates a table with five attributes plus an auto-incrementing primary key
+- Inserts at least six rows of data
+- Uses a SELECT statement to display all rows
 Assumptions:
 - Stores one "Laptop" object per day in pickleDB.
 - Key is today's date "YYYY-MM-DD".
