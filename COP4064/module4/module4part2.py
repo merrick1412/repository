@@ -111,7 +111,7 @@ def display_all_from_db():
 
 def load_kv():
     """Load pickleDB with auto_dump to persist on set/rem."""
-    return PickleDB.load(KV_PATH, auto_dump=True)
+    return PickleDB._load(KV_PATH, auto_dump=True)
 
 def today_key() -> str:
     return date.today().isoformat()  # e.g., '2025-09-21'
