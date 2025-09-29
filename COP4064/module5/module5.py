@@ -138,7 +138,7 @@ def key_index(table: str, field: str, value: str) -> str:
 
 def incr_counter(db, seq_key: str) -> int:
     """Get next sequence value (Enumerable Keys)."""
-    if not db.exists(seq_key):
+    if not db.get(seq_key):
         db.set(seq_key, 0)
     v = int(db.get(seq_key)) + 1
     db.set(seq_key, v)
