@@ -111,7 +111,7 @@ def display_all_from_db():
 
 def load_kv():
     """Load pickleDB with auto_dump to persist on set/rem."""
-    db = pickledb.load(KV_PATH, auto_dump=True)
+    db = pickledb.PickleDB.load(KV_PATH, auto_dump=True)
     purge_expired(db)  # TTL on startup
     return db
 
