@@ -155,14 +155,14 @@ def list_unique(lst: List[int]) -> List[int]:
 
 def index_add(db, table: str, field: str, value: str, rec_id: int):
     key = key_index(table, field, value)
-    arr = db.get(key) if db.exists(key) else []
+    arr = db.get(key) if db.get(key) else []
     if rec_id not in arr:
         arr.append(rec_id)
         db.set(key, list_unique(arr))
 
 def index_remove(db, table: str, field: str, value: str, rec_id: int):
     key = key_index(table, field, value)
-    if not db.exists(key):
+    if not db.get(key):
         return
     arr = [x for x in db.get(key) if x != rec_id]
     if arr:
@@ -202,7 +202,7 @@ def purge_expired(db):
 
 def table_get(db, table: str, rec_id: int) -> Optional[Dict[str, Any]]:
     k = key_record(table, rec_id)
-    return db.get(k) if db.exists(k) else None
+    return db.get(k) if db.get(k) else None
 
 def table_upsert_atomic(db, table: str, rec: Dict[str, Any]) -> int:
     """
@@ -245,7 +245,7 @@ def table_upsert_atomic(db, table: str, rec: Dict[str, Any]) -> int:
     rec["_meta"] = meta
 
     # Previous record (for index diff)
-    prev = db.get(k) if db.exists(k) else None
+    prev = db.get(k) if db.get(k) else None
 
     # SET ONCE atomically
     db.set(k, rec)
@@ -267,7 +267,7 @@ def table_upsert_atomic(db, table: str, rec: Dict[str, Any]) -> int:
 
 def table_delete(db, table: str, rec_id: int):
     k = key_record(table, rec_id)
-    if not db.exists(k):
+    if not db.get(k):
         return
     rec = db.get(k)
     if rec and isinstance(rec, dict):
@@ -284,7 +284,7 @@ def today_key() -> str:
 
 def kv_has_today_item(db) -> bool:
     mkey = key_today_map(today_key())
-    return db.exists(mkey)
+    return db.get(mkey)
 
 def kv_get_today_item(db) -> Dict[str, Any]:
     rid = db.get(key_today_map(today_key()))
@@ -294,7 +294,7 @@ def kv_get_today_item(db) -> Dict[str, Any]:
 def kv_set_today_item(db, item: Dict[str, Any]):
     # Either create new or update existing “today” record atomically
     mkey = key_today_map(today_key())
-    if db.exists(mkey):
+    if db.get(mkey):
         rid = int(db.get(mkey))
         item["_id"] = rid
     item["entry_date"] = today_key()
@@ -302,7 +302,7 @@ def kv_set_today_item(db, item: Dict[str, Any]):
 
 def kv_delete_today_item(db):
     mkey = key_today_map(today_key())
-    if not db.exists(mkey):
+    if not db.get(mkey):
         return
     rid = int(db.get(mkey))
     table_delete(db, "laptops", rid)
