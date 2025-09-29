@@ -168,7 +168,7 @@ def index_remove(db, table: str, field: str, value: str, rec_id: int):
     if arr:
         db.set(key, arr)
     else:
-        db.rem(key)
+        db.remove(key)
 
 def purge_expired(db):
     """Delete expired records and clean indexes."""
@@ -193,10 +193,10 @@ def purge_expired(db):
                         index_remove(db, "laptops", "model_name", str(rec["model_name"]), rid)
                     if "entry_date" in rec:
                         index_remove(db, "laptops", "entry_date", str(rec["entry_date"]), rid)
-                db.rem(k)
+                db.remove(k)
         except Exception:
             # If timestamp malformed, delete defensively
-            db.rem(k)
+            db.remove(k)
 
 # ---- Emulating tables + Atomic aggregates ----
 
@@ -275,7 +275,7 @@ def table_delete(db, table: str, rec_id: int):
             index_remove(db, table, "model_name", str(rec["model_name"]), rec["_id"])
         if rec.get("entry_date"):
             index_remove(db, table, "entry_date", str(rec["entry_date"]), rec["_id"])
-    db.rem(k)
+    db.remove(k)
 
 # ---- “Today” convenience used by menu ----
 
@@ -306,7 +306,7 @@ def kv_delete_today_item(db):
         return
     rid = int(db.get(mkey))
     table_delete(db, "laptops", rid)
-    db.rem(mkey)
+    db.remove(mkey)
 
 # ====================
 # Validation Routines
