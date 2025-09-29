@@ -1,10 +1,10 @@
 """
 Name: Merrick Moncure
-Date: 9/21/2025
-Assignment: Module 4 – Key/Value (pickleDB) Menu App
-Due Date: 9/21/25
+Date: 9/28/2025
+Assignment: Module 5 – Key/Value (pickleDB) Menu App
+Due Date: 9/28/25
 About this project:
-- Starts from Module 3 (Laptop object in pickleDB) and extends it:
+- Starts from Module 4 (Laptop object in pickleDB) and extends it:
   * Add/Edit/Display/Delete current-day Laptop in pickleDB
   * Register (add) current Laptop to a relational DB (SQLite) table
   * Display all Laptops from the relational DB
