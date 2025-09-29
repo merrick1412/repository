@@ -10,7 +10,7 @@ About this project:
 
 - pickleDB:
   * Stores exactly one Laptop per day
-  * KEY = today's ISO date "YYYY-MM-DD" (to match Module 3 approach)
+
 
 - SQLite:
   * Table 'laptops' with 5 attributes + id + entry_date
