@@ -508,7 +508,6 @@ def print_menu(has_today: bool):
     if not has_today:
         print("A) Add Laptop (pickleDB)")
         print("H) Display ALL Laptops from relational DB")
-        print("S) Search laptops by model prefix (KV index demo)")
         print("Q) Quit")
     else:
         print("A) Edit Laptop (pickleDB)")
@@ -516,7 +515,6 @@ def print_menu(has_today: bool):
         print("D) Delete Laptop (pickleDB)")
         print("G) Register Laptop to relational DB")
         print("H) Display ALL Laptops from relational DB")
-        print("S) Search laptops by model prefix (KV index demo)")
         print("Q) Quit")
     print("=======================\n")
 
