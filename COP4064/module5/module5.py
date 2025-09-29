@@ -4,11 +4,9 @@ Date: 9/28/2025
 Assignment: Module 5 – Key/Value (pickleDB) Menu App
 Due Date: 9/28/25
 About this project:
-- Starts from Module 4 (Laptop object in pickleDB) and extends it:
-  * Add/Edit/Display/Delete current-day Laptop in pickleDB
-  * Register (add) current Laptop to a relational DB (SQLite) table
-  * Display all Laptops from the relational DB
-  * Quit
+- Starts from Module 4 (Laptop object in pickleDB) and extends it.
+- Adds KV design patterns: TTL keys, Atomic Aggregates, Emulating Tables,
+  Enumerable Keys, Aggregates (subtypes), and Indexes.
 
 - pickleDB:
   * Stores exactly one Laptop per day
