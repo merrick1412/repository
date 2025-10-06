@@ -6,7 +6,7 @@ from typing import Iterable, Any
 
 DB_NAME = "cs_documentdb_demo"
 COLL_NAME = "sales"
-DATASET_PATH = "sales.json"  
+DATASET_PATH = "sales.json"
 
 def get_client():
     # Default local connection string
