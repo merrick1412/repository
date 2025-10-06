@@ -4,7 +4,13 @@ from pprint import pprint
 import json
 from typing import Iterable, Any
 
-DB_NAME = "cs_documentdb_demo"
+from pymongo import MongoClient
+from bson import json_util
+from pprint import pprint
+import json
+from typing import Iterable, Any
+
+DB_NAME = "salesdata"
 COLL_NAME = "sales"
 DATASET_PATH = "sales.json"
 
@@ -61,12 +67,12 @@ def main():
     coll.insert_many(docs)
     print(f"Inserted {coll.count_documents({})} documents into {DB_NAME}.{COLL_NAME}.")
 
-    # Display all items
-    print("\\nAll items (first 5 shown):")
-    for doc in coll.find({}).limit(5):
+    # Display ALL items (no limit)
+    print("\nAll items (ALL shown):")
+    for doc in coll.find({}):
         pprint(doc)
 
-    print("\\nDone.")
+    print("\nDone.")
 
 if __name__ == "__main__":
     main()
