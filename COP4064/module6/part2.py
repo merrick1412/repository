@@ -1,12 +1,10 @@
 """
 Name: Merrick Moncure
 Date: 10/05/2025
-Assignment: Document DB Part 2 - Creation and Inserts (from JSON)
+Assignment: Document DB Part 2 - Querying
 Due Date: 10/05/2025
 About this project:
-- Connects to local MongoDB
-- Drops and recreates a database and collection
-- Loads docs from a local JSON/NDJSON file
-- Inserts >= 10 items meeting all attribute rules
-- Displays ALL items using find()
+- Connects to the Part 1 MongoDB database/collection
+- Runs the six required finds with projections, filters, and sorts
+- Displays results in table format using tabulate
 """
