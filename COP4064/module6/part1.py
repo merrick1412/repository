@@ -12,8 +12,8 @@ About this project:
 from pymongo import MongoClient
 from pprint import pprint
 
-DB_NAME = "cs_documentdb_demo"
-COLL_NAME = "devices"
+DB_NAME = "sales.json"
+COLL_NAME = "sales"
 
 def get_client():
     # Default local connection
