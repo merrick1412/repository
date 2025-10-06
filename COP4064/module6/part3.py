@@ -10,7 +10,6 @@ About this project:
 - Validates inputs per rubric (whole number range, real number range, non-empty strings with min length)
 """
 
-# ### Part 3) Document DB Basic App (45 points)
 
 from pymongo import MongoClient
 from pymongo.errors import DuplicateKeyError, ServerSelectionTimeoutError
