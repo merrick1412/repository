@@ -1,5 +1,5 @@
 """
-name: merrick moncure
+name: Merrick Moncure
 date: 10/19/2025
 assignment: document db search, indexing, and advanced app
 course: cop4064
