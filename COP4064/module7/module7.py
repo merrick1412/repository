@@ -212,7 +212,7 @@ while True:
     elif choice == "5":
         delete_gadget()
     elif choice == "6":
-        print("bye")
+        print("quitting...")
         break
     else:
         print("invalid")
