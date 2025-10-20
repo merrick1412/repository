@@ -11,9 +11,9 @@ about this file:
 - part 3: menu driven app for gadgets with add, display, update, delete, quit
 """
 
-from pymongo import MongoClient, ASCENDING
-from pymongo.errors import DuplicateKeyError
 from pprint import pprint
+
+from pymongo import MongoClient, ASCENDING
 
 # connect to mongodb
 client = MongoClient("mongodb://localhost:27017")
