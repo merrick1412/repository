@@ -1,0 +1,163 @@
+// Name: Merrick Moncure
+// Assignment: Document Database Search Queries
+// Date: 10/26/2025
+// Description: Seven MongoDB Atlas Search queries on the sample_mflix.movies collection
+
+use sample_mflix;
+
+// 1) text + query + path
+db.movies.aggregate([
+  {
+    $search: {
+      index: "default",
+      text: {
+        query: "Matrix",
+        path: "title"
+      }
+    }
+  },
+  { $limit: 5 },
+  {
+    $project: {
+      _id: 0,
+      title: 1,
+      year: 1,
+      score: { $meta: "searchScore" }
+    }
+  }
+]);
+
+// 2) text + query + path + synonyms
+db.movies.aggregate([
+  {
+    $search: {
+      index: "default",
+      text: {
+        query: "car",
+        path: "plot",
+        synonyms: "vehicleSyns"
+      }
+    }
+  },
+  { $limit: 5 },
+  {
+    $project: {
+      _id: 0,
+      title: 1,
+      plot: 1,
+      score: { $meta: "searchScore" }
+    }
+  }
+]);
+
+// 3) phrase + query + path
+db.movies.aggregate([
+  {
+    $search: {
+      index: "default",
+      phrase: {
+        query: "science fiction",
+        path: "plot"
+      }
+    }
+  },
+  { $limit: 5 },
+  {
+    $project: {
+      _id: 0,
+      title: 1,
+      plot: 1,
+      score: { $meta: "searchScore" }
+    }
+  }
+]);
+
+// 4) equals + query + path
+db.movies.aggregate([
+  {
+    $search: {
+      index: "default",
+      equals: {
+        query: "PG-13",
+        path: "rated"
+      }
+    }
+  },
+  { $limit: 5 },
+  {
+    $project: {
+      _id: 0,
+      title: 1,
+      rated: 1,
+      year: 1,
+      score: { $meta: "searchScore" }
+    }
+  }
+]);
+
+// 5) range + path + gt
+db.movies.aggregate([
+  {
+    $search: {
+      index: "default",
+      range: {
+        path: "year",
+        gt: 2010
+      }
+    }
+  },
+  { $limit: 5 },
+  {
+    $project: {
+      _id: 0,
+      title: 1,
+      year: 1,
+      score: { $meta: "searchScore" }
+    }
+  }
+]);
+
+// 6) range + path + lt
+db.movies.aggregate([
+  {
+    $search: {
+      index: "default",
+      range: {
+        path: "year",
+        lt: 1970
+      }
+    }
+  },
+  { $limit: 5 },
+  {
+    $project: {
+      _id: 0,
+      title: 1,
+      year: 1,
+      score: { $meta: "searchScore" }
+    }
+  }
+]);
+
+// 7) range + path + lt + gt
+db.movies.aggregate([
+  {
+    $search: {
+      index: "default",
+      range: {
+        path: "year",
+        gt: 1990,
+        lt: 2000
+      }
+    }
+  },
+  { $limit: 5 },
+  {
+    $project: {
+      _id: 0,
+      title: 1,
+      year: 1,
+      score: { $meta: "searchScore" }
+    }
+  }
+]);
