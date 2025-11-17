@@ -32,7 +32,7 @@ from neo4j import GraphDatabase
 # ------------------ CONFIG ------------------ #
 URI = "neo4j://localhost:7687"
 USER = "mwmoncure@gmail.com"
-PASSWORD = "password"           # <-- change to your Neo4j password
+PASSWORD = "password"
 # -------------------------------------------- #
 
 
