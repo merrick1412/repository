@@ -1,4 +1,16 @@
 """
+name: Merrick Moncure
+date: 11/16/2025
+assignment: document db search, indexing, and advanced app
+course: cop4064
+
+about this file:
+- connects to local mongodb using pymongo
+- part 1: shows all required finds and updates
+- part 2: explain plan before and after adding index
+- part 3: menu driven app for gadgets with add, display, update, delete, quit
+"""
+"""
 degree_distribution.py
 
 Builds and displays the node degree distribution for Tag nodes
