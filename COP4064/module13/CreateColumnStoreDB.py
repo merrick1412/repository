@@ -2,7 +2,7 @@
 Name: Merrick Moncure
 Date: 11/30/2025
 Assignment: Column Store Project – Part 1 (CreateColumnStoreDB.py)
-Due Date: 12/xx/2025
+Due Date: 11/30/2025
 
 About this script:
 - Connects to a MonetDB column-store database using pymonetdb
